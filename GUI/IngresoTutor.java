@@ -19,7 +19,7 @@ public class IngresoTutor extends IngresoFrame {
         initComponents();
     }
     
-    public void initComponents(){
+    private void initComponents(){
         JLabel etiqueta = new JLabel("Contaseña");
         etiqueta.setSize(200, 25);
         etiqueta.setLocation(50, 170);
@@ -41,7 +41,20 @@ public class IngresoTutor extends IngresoFrame {
         cambiarCuenta.addActionListener(
                 new IrIngresoNinioActionListener(this)
         );
-        this.setVisible(true);
+    }
+    
+    public void destruir(){
+        super.destruir();
+        if(contrasenia!=null){
+            contrasenia=null;
+        }
+        if(ingresar!=null){
+            ingresar=null;
+        }
+        if(cambiarCuenta!=null){
+            cambiarCuenta=null;
+        }
+        System.gc();
     }
     
 }

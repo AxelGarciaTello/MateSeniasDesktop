@@ -50,5 +50,14 @@ public class IngresoFrame extends JFrame{
         contenedor.add(nombreUsuario);
     }
     
+    public void destruir(){
+        if(nombreUsuario!=null){
+            nombreUsuario=null;
+        }
+        if(contenedor!=null){
+            contenedor=null;
+        }
+        System.gc();
+    }
     
 }

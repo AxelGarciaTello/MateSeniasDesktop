@@ -50,6 +50,16 @@ public class MenuFrame extends JFrame {
         contenedor.add(titulo, BorderLayout.NORTH);
     }
     
+    public void destruir(){
+        if(contenedor!=null){
+            contenedor=null;
+        }
+        if(icono!=null){
+            icono=null;
+        }
+        System.gc();
+    }
+    
     public void agregarMenu(JPanel menu){
         contenedor.add(menu, BorderLayout.WEST);
     }

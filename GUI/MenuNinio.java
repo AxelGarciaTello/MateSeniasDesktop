@@ -46,7 +46,6 @@ public class MenuNinio extends MenuFrame {
         supermenu.add(menuJuego, "juego");
         super.agregarFondo(supermenu);
         crearMenu();
-        this.setVisible(true);
     }
     
     private void crearMenu(){
@@ -164,7 +163,7 @@ public class MenuNinio extends MenuFrame {
         }
     }
     
-    public void crearMenuJuego(){
+    private void crearMenuJuego(){
         menuJuego = new JPanel();
         menuJuego.setLayout(new GridLayout(6,2));
         temasJuego = new JButton[12];
@@ -189,10 +188,69 @@ public class MenuNinio extends MenuFrame {
         }
     }
     
-    public void crearFondo(){
+    private void crearFondo(){
         fondo = new JPanel();
         fondo.setLayout(new GridLayout(1,1));
         fondo.add(super.icono);
+    }
+    
+    public void destruir(){
+        int x;
+        super.destruir();
+        if(video!=null){
+            video=null;
+        }
+        if(ejemplo!=null){
+            ejemplo=null;
+        }
+        if(ejercicio!=null){
+            ejercicio=null;
+        }
+        if(juego!=null){
+            juego=null;
+        }
+        if(salir!=null){
+            salir=null;
+        }
+        for(x=0; x<12; x++){
+            if(temasVideo[x]!=null){
+                temasVideo[x]=null;
+            }
+            if(temasEjemplo[x]!=null){
+                temasEjemplo[x]=null;
+            }
+            if(temasEjercicio[x]!=null){
+                temasEjercicio[x]=null;
+            }
+            if(temasJuego[x]!=null){
+                temasJuego[x]=null;
+            }
+        }
+        if(temasEjemplo[12]!=null){
+            temasEjemplo[12]=null;
+        }
+        if(menu!=null){
+            menu=null;
+        }
+        if(menuVideo!=null){
+            menuVideo=null;
+        }
+        if(menuEjemplo!=null){
+            menuEjemplo=null;
+        }
+        if(menuEjercicio!=null){
+            menuEjercicio=null;
+        }
+        if(menuJuego!=null){
+            menuJuego=null;
+        }
+        if(fondo!=null){
+            fondo=null;
+        }
+        if(supermenu!=null){
+            supermenu=null;
+        }
+        System.gc();
     }
     
 }
