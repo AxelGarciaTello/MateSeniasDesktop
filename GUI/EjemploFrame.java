@@ -1,6 +1,7 @@
 
 package GUI;
 
+import Control.CerrarVentanaActionListener;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -15,7 +16,7 @@ import static javax.swing.SwingConstants.CENTER;
 
 
 public class EjemploFrame extends JFrame {
-    private JButton atras;
+    public JButton atras;
     private JTextField[] numeros;
     public Container contenedor;
     
@@ -59,6 +60,9 @@ public class EjemploFrame extends JFrame {
                 )
         );
         atras.setLocation(10, 10);
+        atras.addActionListener(
+                new CerrarVentanaActionListener(this)
+        );
         contenedor.add(atras);
         JLabel[] simbolos = new JLabel[6];
         for(a=0; a<6; a++){
@@ -95,6 +99,22 @@ public class EjemploFrame extends JFrame {
             xs+=85;
             contenedor.add(separador[a]);
         }
+    }
+    
+    public void destruir(){
+        int x=0;
+        if(atras!=null){
+            atras=null;
+        }
+        for(x=0; x<18; x++){
+            if(numeros[x]!=null){
+                numeros[x]=null;
+            }
+        }
+        if(contenedor!=null){
+            contenedor=null;
+        }
+        System.gc();
     }
     
 }
