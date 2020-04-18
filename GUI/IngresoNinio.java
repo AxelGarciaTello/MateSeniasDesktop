@@ -32,6 +32,7 @@ public class IngresoNinio extends IngresoFrame {
         );
     }
     
+    @Override
     public void destruir(){
         super.destruir();
         if(ingresar!=null){

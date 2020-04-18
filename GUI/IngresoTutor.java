@@ -43,6 +43,7 @@ public class IngresoTutor extends IngresoFrame {
         );
     }
     
+    @Override
     public void destruir(){
         super.destruir();
         if(contrasenia!=null){
