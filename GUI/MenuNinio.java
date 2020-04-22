@@ -1,11 +1,13 @@
 
 package GUI;
 
+import Control.AbrirVideoActionListener;
 import Control.IrEjemploActionListener;
 import Control.IrEjercicioActionListener;
 import Control.IrJuegoActionListener;
 import Control.SeleccionarMenuNinioActionListener;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -54,31 +56,47 @@ public class MenuNinio extends MenuFrame {
     private void crearMenu(){
         menu = new JPanel();
         menu.setLayout(new GridLayout(5,1));
+        menu.setBackground(new Color(56, 87, 35));
         video = new JButton("1. Aprende: con videos");
         video.setIcon(
                 new ImageIcon(
                         getClass().getResource("Iconos/Video.png")
                 )
         );
+        video.setBackground(new Color(56, 87, 35));
+        video.setForeground(new Color(255, 255, 255));
+        video.setBorder(null);
         ejemplo = new JButton("2. Sigue: los ejemplos");
         ejemplo.setIcon(
                 new ImageIcon(
                         getClass().getResource("Iconos/Ejemplos.png")
                 )
         );
+        ejemplo.setBackground(new Color(56, 87, 35));
+        ejemplo.setForeground(new Color(255, 255, 255));
+        ejemplo.setBorder(null);
         ejercicio = new JButton("3. Práctica: con ejercicios");
         ejercicio.setIcon(
                 new ImageIcon(
                         getClass().getResource("Iconos/Problemas.png")
                 )
         );
+        ejercicio.setBackground(new Color(56, 87, 35));
+        ejercicio.setForeground(new Color(255, 255, 255));
+        ejercicio.setBorder(null);
         juego = new JButton("4. Juega y diviertete");
         juego.setIcon(
                 new ImageIcon(
                         getClass().getResource("Iconos/Juegos.png")
                 )
         );
+        juego.setBackground(new Color(56, 87, 35));
+        juego.setForeground(new Color(255, 255, 255));
+        juego.setBorder(null);
         salir = new JButton("5. Salir");
+        salir.setBackground(new Color(56, 87, 35));
+        salir.setForeground(new Color(255, 255, 255));
+        salir.setBorder(null);
         menu.add(video);
         menu.add(ejemplo);
         menu.add(ejercicio);
@@ -105,6 +123,7 @@ public class MenuNinio extends MenuFrame {
     private void crearMenuVideo(){
         menuVideo = new JPanel();
         menuVideo.setLayout(new GridLayout(6,2));
+        menuVideo.setBackground(new Color(56, 87, 35));
         temasVideo = new JButton[12];
         temasVideo[0] = new JButton("1. Introducción ¿Qué es la artimética?");
         temasVideo[1] = new JButton("2. Concepto de unidad y números");
@@ -119,15 +138,22 @@ public class MenuNinio extends MenuFrame {
         temasVideo[10] = new JButton("11. Ejemplos de multiplicar");
         temasVideo[11] = new JButton("12. Ejemplos de dividir");
         for(int x=0; x<12; x++){
+            temasVideo[x].setBackground(new Color(56, 87, 35));
+            temasVideo[x].setForeground(new Color(255, 255, 255));
+            temasVideo[x].setBorder(null);
+            temasVideo[x].addActionListener(
+                    new AbrirVideoActionListener("")
+            );
             menuVideo.add(temasVideo[x]);
         }
     }
     
     private void crearMenuEjemplo(){
         int x=0;
-        String[] simbolo={"+","+","+","-","-","-","x","x","x","/","/","/"};
+        String[] simbolo={"+","+","+","+","-","-","-","x","x","x","/","/","/"};
         menuEjemplo = new JPanel();
         menuEjemplo.setLayout(new GridLayout(7,2));
+        menuEjemplo.setBackground(new Color(56, 87, 35));
         temasEjemplo = new JButton[13];
         temasEjemplo[0] = new JButton("Sistema Numérico: Decimal");
         temasEjemplo[1] = new JButton("Sumar con unidades");
@@ -142,14 +168,15 @@ public class MenuNinio extends MenuFrame {
         temasEjemplo[10] = new JButton("Dividir con unidades");
         temasEjemplo[11] = new JButton("Dividir con decenas");
         temasEjemplo[12] = new JButton("Dividir con centenas");
-        for(x=1; x<13; x++){
+        for(x=0; x<13; x++){
+            temasEjemplo[x].setBackground(new Color(56, 87, 35));
+            temasEjemplo[x].setForeground(new Color(255, 255, 255));
+            temasEjemplo[x].setBorder(null);
             temasEjemplo[x].addActionListener(
                     new IrEjemploActionListener(
-                            temasEjemplo[x].getText(), simbolo[x-1]
+                            temasEjemplo[x].getText(), simbolo[x]
                     )
             );
-        }
-        for(x=0; x<13; x++){
             menuEjemplo.add(temasEjemplo[x]);
         }
     }
@@ -159,6 +186,7 @@ public class MenuNinio extends MenuFrame {
         String[] simbolo={"+","+","+","-","-","-","x","x","x","/","/","/"};
         menuEjercicio = new JPanel();
         menuEjercicio.setLayout(new GridLayout(6,2));
+        menuEjercicio.setBackground(new Color(56, 87, 35));
         temasEjercicio = new JButton[12];
         temasEjercicio[0] = new JButton("Sumar con unidades");
         temasEjercicio[1] = new JButton("Sumar con decenas");
@@ -173,6 +201,9 @@ public class MenuNinio extends MenuFrame {
         temasEjercicio[10] = new JButton("Dividir con decenas");
         temasEjercicio[11] = new JButton("Dividir con centenas");
         for(x=0; x<12; x++){
+            temasEjercicio[x].setBackground(new Color(56, 87, 35));
+            temasEjercicio[x].setForeground(new Color(255, 255, 255));
+            temasEjercicio[x].setBorder(null);
             temasEjercicio[x].addActionListener(
                     new IrEjercicioActionListener(
                             temasEjercicio[x].getText(), simbolo[x]
@@ -186,6 +217,7 @@ public class MenuNinio extends MenuFrame {
         int x=0;
         menuJuego = new JPanel();
         menuJuego.setLayout(new GridLayout(6,2));
+        menuJuego.setBackground(new Color(56, 87, 35));
         temasJuego = new JButton[12];
         temasJuego[0] = new JButton("Sumas");
         temasJuego[1] = new JButton("Restas");
@@ -204,6 +236,9 @@ public class MenuNinio extends MenuFrame {
         temasJuego[11] = new JButton("Sumas, restas, multiplicaciones y"
                 + " divisiones");
         for(x=0; x<12; x++){
+            temasJuego[x].setBackground(new Color(56, 87, 35));
+            temasJuego[x].setForeground(new Color(255, 255, 255));
+            temasJuego[x].setBorder(null);
             temasJuego[x].addActionListener(
                     new IrJuegoActionListener(temasJuego[x].getText())
             );
@@ -214,6 +249,7 @@ public class MenuNinio extends MenuFrame {
     private void crearFondo(){
         fondo = new JPanel();
         fondo.setLayout(new GridLayout(1,1));
+        fondo.setBackground(new Color(56, 87, 35));
         fondo.add(super.icono);
     }
     

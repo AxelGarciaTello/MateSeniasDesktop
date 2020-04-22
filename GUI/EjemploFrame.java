@@ -42,7 +42,7 @@ public class EjemploFrame extends JFrame {
         );
         this.setUndecorated(true);
         contenedor = this.getContentPane();
-        contenedor.setBackground(new Color(0, 80, 0));
+        contenedor.setBackground(new Color(56, 87, 35));
         contenedor.setLayout(null);
         JLabel etiqueta = new JLabel(titulo);
         etiqueta.setSize(600, 35);

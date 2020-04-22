@@ -2,6 +2,7 @@
 package GUI;
 
 import Control.CerrarVentanaActionListener;
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -32,6 +33,9 @@ public class Ejercicio extends EjemploFrame {
                 x+=85;
                 b=0;
             }
+            respuestas[a].setBackground(new Color(47, 55, 74));
+            respuestas[a].setForeground(new Color(255, 255, 255));
+            respuestas[a].setBorder(null);
             super.contenedor.add(respuestas[a]);
         }
         calificar = new JButton();

@@ -45,7 +45,7 @@ public class MenuFrame extends JFrame {
         icono.setHorizontalAlignment(CENTER);
         icono.setVerticalAlignment(CENTER);
         contenedor = this.getContentPane();
-        contenedor.setBackground(new Color(0, 80, 0));
+        contenedor.setBackground(new Color(56, 87, 35));
         contenedor.setLayout(new BorderLayout());
         contenedor.add(titulo, BorderLayout.NORTH);
     }

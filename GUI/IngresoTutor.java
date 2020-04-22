@@ -31,9 +31,15 @@ public class IngresoTutor extends IngresoFrame {
         ingresar = new JButton("Ingresar");
         ingresar.setSize(200, 25);
         ingresar.setLocation(50, 245);
+        ingresar.setBackground(new Color(47, 55, 74));
+        ingresar.setForeground(new Color(255, 255, 255));
+        ingresar.setBorder(null);
         cambiarCuenta = new JButton("Ingresar como niño");
         cambiarCuenta.setSize(200, 25);
         cambiarCuenta.setLocation(50, 275);
+        cambiarCuenta.setBackground(new Color(47, 55, 74));
+        cambiarCuenta.setForeground(new Color(255, 255, 255));
+        cambiarCuenta.setBorder(null);
         super.contenedor.add(etiqueta);
         super.contenedor.add(contrasenia);
         super.contenedor.add(ingresar);

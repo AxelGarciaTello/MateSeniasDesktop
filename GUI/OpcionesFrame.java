@@ -32,7 +32,7 @@ public class OpcionesFrame extends JFrame {
         );
         this.setUndecorated(true);
         contenedor=this.getContentPane();
-        contenedor.setBackground(new Color(0, 80, 0));
+        contenedor.setBackground(new Color(56, 87, 35));
         contenedor.setLayout(null);
         opciones = new JButton[15];
         opciones[0] = new JButton("+");
@@ -67,6 +67,8 @@ public class OpcionesFrame extends JFrame {
         opciones[14].setLocation(10,270);
         for(a=0; a<15; a++){
             opciones[a].setSize(50,50);
+            opciones[a].setBackground(new Color(47, 55, 74));
+            opciones[a].setForeground(new Color(255, 255, 255));
             opciones[a].addActionListener(
                     new ColocarOpcionActionListener(
                             proveniente, opciones[a].getText(), this

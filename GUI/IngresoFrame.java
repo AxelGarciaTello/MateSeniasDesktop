@@ -43,7 +43,7 @@ public class IngresoFrame extends JFrame{
         nombreUsuario.setSize(200, 25);
         nombreUsuario.setLocation(50, 135);
         contenedor = this.getContentPane();
-        contenedor.setBackground(new Color(0, 80, 0));
+        contenedor.setBackground(new Color(56, 87, 35));
         contenedor.setLayout(null);
         contenedor.add(etiqueta[0]);
         contenedor.add(etiqueta[1]);

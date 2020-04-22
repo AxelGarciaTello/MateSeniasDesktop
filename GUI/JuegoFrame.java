@@ -39,6 +39,7 @@ public class JuegoFrame extends JFrame {
         contenedor=this.getContentPane();
         contenedor.setBackground(new Color(0, 80, 0));
         contenedor.setLayout(null);
+        contenedor.setBackground(new Color(56, 87, 35));
         JLabel etiqueta = new JLabel("Crucigrama: "+titulo);
         etiqueta.setSize(930, 35);
         etiqueta.setLocation(0, 10);
@@ -64,6 +65,8 @@ public class JuegoFrame extends JFrame {
             crucigrama[x] = new JButton("000");
             crucigrama[x].setSize(75, 75);
             crucigrama[x].setHorizontalAlignment(JTextField.CENTER);
+            crucigrama[x].setBackground(new Color(47, 55, 74));
+            crucigrama[x].setForeground(new Color(255, 255, 255));
         }
         crucigrama[0].setLocation(275,100);
         crucigrama[1].setLocation(575,100);
