@@ -40,8 +40,9 @@ public class IngresoFrame extends JFrame{
         etiqueta[1].setFont(new Font("Ubuntu", 0, 20));
         etiqueta[1].setForeground(new Color(255, 255, 255));
         nombreUsuario = new JTextField();
-        nombreUsuario.setSize(200, 25);
+        nombreUsuario.setSize(200, 30);
         nombreUsuario.setLocation(50, 135);
+        nombreUsuario.setFont(new Font("Ubuntu", 0, 20));
         contenedor = this.getContentPane();
         contenedor.setBackground(new Color(56, 87, 35));
         contenedor.setLayout(null);

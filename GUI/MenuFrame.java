@@ -39,7 +39,7 @@ public class MenuFrame extends JFrame {
         icono = new JLabel();
         icono.setIcon(
                 new ImageIcon(
-                        getClass().getResource("Iconos/IconoGrande.png")
+                        getClass().getResource("Iconos/Icono.png")
                 )
         );
         icono.setHorizontalAlignment(CENTER);

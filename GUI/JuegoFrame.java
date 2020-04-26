@@ -59,6 +59,8 @@ public class JuegoFrame extends JFrame {
         atras.addActionListener(
                 new CerrarVentanaActionListener(this)
         );
+        atras.setBackground(new Color(56, 87, 35));
+        atras.setBorder(null);
         contenedor.add(atras);
         crucigrama = new JButton[24];
         for(x=0; x<24; x++){
@@ -102,10 +104,12 @@ public class JuegoFrame extends JFrame {
         calificar.setSize(50, 50);
         calificar.setIcon(
                 new ImageIcon(
-                        getClass().getResource("Iconos/Atras.png")
+                        getClass().getResource("Iconos/Calificar.png")
                 )
         );
         calificar.setLocation(870,10);
+        calificar.setBackground(new Color(56, 87, 35));
+        calificar.setBorder(null);
         contenedor.add(calificar);
     }
     

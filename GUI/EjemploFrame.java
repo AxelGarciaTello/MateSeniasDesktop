@@ -63,6 +63,8 @@ public class EjemploFrame extends JFrame {
         atras.addActionListener(
                 new CerrarVentanaActionListener(this)
         );
+        atras.setBackground(new Color(56, 87, 35));
+        atras.setBorder(null);
         contenedor.add(atras);
         JLabel[] simbolos = new JLabel[6];
         for(a=0; a<6; a++){

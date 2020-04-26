@@ -42,10 +42,12 @@ public class Ejercicio extends EjemploFrame {
         calificar.setSize(50, 50);
         calificar.setIcon(
                 new ImageIcon(
-                        getClass().getResource("Iconos/Atras.png")
+                        getClass().getResource("Iconos/Calificar.png")
                 )
         );
         calificar.setLocation(540, 10);
+        calificar.setBackground(new Color(56, 87, 35));
+        calificar.setBorder(null);
         contenedor.add(calificar);
         reintentar = new JButton("Intentarlo otra vez");
         reintentar.setLocation(175, 300);
