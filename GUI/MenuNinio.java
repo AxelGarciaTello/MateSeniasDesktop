@@ -6,8 +6,10 @@ import Control.IrEjemploActionListener;
 import Control.IrEjercicioActionListener;
 import Control.IrJuegoActionListener;
 import Control.SeleccionarMenuNinioActionListener;
+import Logico.Ninio;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -30,10 +32,12 @@ public class MenuNinio extends MenuFrame {
     private JPanel menuJuego;
     private JPanel fondo;
     private JPanel supermenu;
+    private Ninio ninio;
     
-    public MenuNinio(){
+    public MenuNinio(Ninio ninio){
         super();
         initComponents();
+        this.ninio=ninio;
     }
     
     private void initComponents(){
@@ -55,7 +59,7 @@ public class MenuNinio extends MenuFrame {
     
     private void crearMenu(){
         menu = new JPanel();
-        menu.setLayout(new GridLayout(5,1));
+        menu.setLayout(new GridLayout(5,1, 10, 10));
         menu.setBackground(new Color(56, 87, 35));
         video = new JButton("1. Aprende: con videos");
         video.setIcon(
@@ -94,6 +98,11 @@ public class MenuNinio extends MenuFrame {
         juego.setForeground(new Color(255, 255, 255));
         juego.setBorder(null);
         salir = new JButton("5. Salir");
+        salir.setIcon(
+                new ImageIcon(
+                        getClass().getResource("Iconos/Salir.png")
+                )
+        );
         salir.setBackground(new Color(56, 87, 35));
         salir.setForeground(new Color(255, 255, 255));
         salir.setBorder(null);
@@ -141,6 +150,7 @@ public class MenuNinio extends MenuFrame {
             temasVideo[x].setBackground(new Color(56, 87, 35));
             temasVideo[x].setForeground(new Color(255, 255, 255));
             temasVideo[x].setBorder(null);
+            temasVideo[x].setFont(new Font("Ubuntu", 0, 20));
             temasVideo[x].addActionListener(
                     new AbrirVideoActionListener("")
             );
@@ -172,6 +182,7 @@ public class MenuNinio extends MenuFrame {
             temasEjemplo[x].setBackground(new Color(56, 87, 35));
             temasEjemplo[x].setForeground(new Color(255, 255, 255));
             temasEjemplo[x].setBorder(null);
+            temasEjemplo[x].setFont(new Font("Ubuntu", 0, 20));
             temasEjemplo[x].addActionListener(
                     new IrEjemploActionListener(
                             temasEjemplo[x].getText(), simbolo[x]
@@ -204,6 +215,7 @@ public class MenuNinio extends MenuFrame {
             temasEjercicio[x].setBackground(new Color(56, 87, 35));
             temasEjercicio[x].setForeground(new Color(255, 255, 255));
             temasEjercicio[x].setBorder(null);
+            temasEjercicio[x].setFont(new Font("Ubuntu", 0, 20));
             temasEjercicio[x].addActionListener(
                     new IrEjercicioActionListener(
                             temasEjercicio[x].getText(), simbolo[x]
@@ -239,6 +251,7 @@ public class MenuNinio extends MenuFrame {
             temasJuego[x].setBackground(new Color(56, 87, 35));
             temasJuego[x].setForeground(new Color(255, 255, 255));
             temasJuego[x].setBorder(null);
+            temasJuego[x].setFont(new Font("Ubuntu", 0, 20));
             temasJuego[x].addActionListener(
                     new IrJuegoActionListener(temasJuego[x].getText())
             );
