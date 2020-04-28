@@ -1,12 +1,15 @@
 
 package GUI;
 
+import Control.AbrirSistemaNumericoActionListener;
 import Control.AbrirVideoActionListener;
 import Control.IrEjemploActionListener;
 import Control.IrEjercicioActionListener;
 import Control.IrJuegoActionListener;
 import Control.SeleccionarMenuNinioActionListener;
+import Logico.Ejemplo;
 import Logico.Ninio;
+import Logico.Operacion;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -33,11 +36,13 @@ public class MenuNinio extends MenuFrame {
     private JPanel fondo;
     private JPanel supermenu;
     private Ninio ninio;
+    private Ejemplo[] ejemplos;
     
     public MenuNinio(Ninio ninio){
         super();
         initComponents();
         this.ninio=ninio;
+        crearEjemplos();
     }
     
     private void initComponents(){
@@ -161,6 +166,7 @@ public class MenuNinio extends MenuFrame {
     private void crearMenuEjemplo(){
         int x=0;
         String[] simbolo={"+","+","+","+","-","-","-","x","x","x","/","/","/"};
+        IrEjemploActionListener[] irEjemplo = new IrEjemploActionListener[13];
         menuEjemplo = new JPanel();
         menuEjemplo.setLayout(new GridLayout(7,2));
         menuEjemplo.setBackground(new Color(56, 87, 35));
@@ -183,13 +189,17 @@ public class MenuNinio extends MenuFrame {
             temasEjemplo[x].setForeground(new Color(255, 255, 255));
             temasEjemplo[x].setBorder(null);
             temasEjemplo[x].setFont(new Font("Ubuntu", 0, 20));
-            temasEjemplo[x].addActionListener(
-                    new IrEjemploActionListener(
-                            temasEjemplo[x].getText(), simbolo[x]
-                    )
-            );
+            irEjemplo[x] = new IrEjemploActionListener(
+                                    temasEjemplo[x].getText(),
+                                    simbolo[x]
+                                );
+            temasEjemplo[x].addActionListener(irEjemplo[x]);
             menuEjemplo.add(temasEjemplo[x]);
         }
+        temasEjemplo[0].removeActionListener(irEjemplo[0]);
+        temasEjemplo[0].addActionListener(
+                new AbrirSistemaNumericoActionListener()
+        );
     }
     
     private void crearMenuEjercicio(){
@@ -266,6 +276,36 @@ public class MenuNinio extends MenuFrame {
         fondo.add(super.icono);
     }
     
+    private void crearEjemplos(){
+        ejemplos = new Ejemplo[12];
+        Operacion[] operaciones = new Operacion[6];
+        char[] signos = {'+','-','x','/'};
+        int a, b=0;
+        for(a=0; a<4; a++){
+            operaciones[0] = new Operacion(6, 3, signos[a]);
+            operaciones[1] = new Operacion(2, 1, signos[a]);
+            operaciones[2] = new Operacion(5, 6, signos[a]);
+            operaciones[3] = new Operacion(9, 1, signos[a]);
+            operaciones[4] = new Operacion(2, 3, signos[a]);
+            operaciones[5] = new Operacion(8, 4, signos[a]);
+            ejemplos[b++] = new Ejemplo(operaciones);
+            operaciones[0] = new Operacion(21, 3, signos[a]);
+            operaciones[1] = new Operacion(90, 45, signos[a]);
+            operaciones[2] = new Operacion(35, 7, signos[a]);
+            operaciones[3] = new Operacion(24, 6, signos[a]);
+            operaciones[4] = new Operacion(56, 8, signos[a]);
+            operaciones[5] = new Operacion(56, 7, signos[a]);
+            ejemplos[b++] = new Ejemplo(operaciones);
+            operaciones[0] = new Operacion(842, 421, signos[a]);
+            operaciones[1] = new Operacion(800, 200, signos[a]);
+            operaciones[2] = new Operacion(150, 50, signos[a]);
+            operaciones[3] = new Operacion(300, 60, signos[a]);
+            operaciones[4] = new Operacion(400, 100, signos[a]);
+            operaciones[5] = new Operacion(624, 208, signos[a]);
+            ejemplos[b++] = new Ejemplo(operaciones);
+        }
+    }
+    
     @Override
     public void destruir(){
         int x;
@@ -322,6 +362,12 @@ public class MenuNinio extends MenuFrame {
         }
         if(supermenu!=null){
             supermenu=null;
+        }
+        for(x=0; x<12; x++){
+            if(ejemplos[x]!=null){
+                ejemplos[x].destruir();
+                ejemplos[x]=null;
+            }
         }
         System.gc();
     }
