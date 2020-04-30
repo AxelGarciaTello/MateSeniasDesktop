@@ -7,17 +7,15 @@ import java.awt.event.ActionListener;
 
 
 public class IrEjercicioActionListener implements ActionListener {
-    private String titulo,
-                   simbolo;
     
-    public IrEjercicioActionListener(String titulo, String simbolo){
-        this.titulo=titulo;
-        this.simbolo=simbolo;
+    
+    public IrEjercicioActionListener(){
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        Ejercicio ejercicio = new Ejercicio(titulo, simbolo);
+        Ejercicio ejercicio = new Ejercicio();
         ejercicio.setVisible(true);
     }
     
