@@ -28,9 +28,17 @@ public class Operacion {
         return numero2;
     }
     
+    public char getSigno(){
+        return signo;
+    }
+    
     public int getRespuesta(){
         calcularRespuesta();
         return respuesta;
+    }
+    
+    public void setSigno(char signo){
+        this.signo=signo;
     }
     
     private void calcularRespuesta(){
