@@ -2,6 +2,8 @@
 package GUI;
 
 import Control.CerrarVentanaActionListener;
+import Logico.Ejemplo;
+import Logico.Operacion;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -19,18 +21,22 @@ public class EjemploFrame extends JFrame {
     public JButton atras;
     private JTextField[] numeros;
     public Container contenedor;
+    private Ejemplo ejemplo;
     
-    public EjemploFrame(String titulo, String simbolo){
-        super(titulo);
-        initComponents(titulo, simbolo);
+    public EjemploFrame(Ejemplo ejemplo){
+        this.ejemplo=ejemplo;
+        initComponents();
     }
     
-    private void initComponents(String titulo, String simbolo){
+    private void initComponents(){
         int a=0,
             b=0,
             x=65,
             y=85,
-            xs=45;
+            xs=45,
+            div=0,
+            contador=0,
+            valor=0;
         this.setSize(600, 337);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -44,7 +50,7 @@ public class EjemploFrame extends JFrame {
         contenedor = this.getContentPane();
         contenedor.setBackground(new Color(56, 87, 35));
         contenedor.setLayout(null);
-        JLabel etiqueta = new JLabel(titulo);
+        JLabel etiqueta = new JLabel(ejemplo.getTema());
         etiqueta.setSize(600, 35);
         etiqueta.setLocation(0, 10);
         etiqueta.setFont(new Font("Ubuntu", 0, 35));
@@ -66,9 +72,12 @@ public class EjemploFrame extends JFrame {
         atras.setBackground(new Color(56, 87, 35));
         atras.setBorder(null);
         contenedor.add(atras);
+        Operacion[] operaciones = ejemplo.getOperaciones();
         JLabel[] simbolos = new JLabel[6];
         for(a=0; a<6; a++){
-            simbolos[a] = new JLabel(simbolo);
+            simbolos[a] = new JLabel(
+                    String.valueOf(operaciones[a].getSigno())
+            );
             simbolos[a].setSize(25, 25);
             simbolos[a].setLocation(xs, 100);
             xs+=85;
@@ -77,7 +86,24 @@ public class EjemploFrame extends JFrame {
         }
         numeros = new JTextField[18];
         for(a=0; a<18; a++){
-            numeros[a] = new JTextField("000");
+            div=a/3;
+            switch (contador) {
+                case 0:
+                    valor=operaciones[div].getNumero1();
+                    contador++;
+                    break;
+                case 1:
+                    valor=operaciones[div].getNumero2();
+                    contador++;
+                    break;
+                case 2:
+                    valor=operaciones[div].getRespuesta();
+                    contador=0;
+                    break;
+            }
+            numeros[a] = new JTextField(
+                    String.valueOf(valor)
+            );
             numeros[a].setSize(50, 25);
             numeros[a].setLocation(x, y);
             y+=30;

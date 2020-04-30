@@ -2,6 +2,7 @@
 package GUI;
 
 import Control.CerrarVentanaActionListener;
+import Logico.Ejemplo;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,8 +12,8 @@ public class Ejercicio extends EjemploFrame {
     private JButton calificar;
     private JButton reintentar;
     
-    public Ejercicio(String titulo, String simbolo) {
-        super(titulo, simbolo);
+    public Ejercicio() {
+        super(new Ejemplo());
         initComponents();
     }
     
