@@ -40,9 +40,8 @@ public class MenuNinio extends MenuFrame {
     
     public MenuNinio(Ninio ninio){
         super();
-        initComponents();
         this.ninio=ninio;
-        crearEjemplos();
+        initComponents();
     }
     
     private void initComponents(){
@@ -165,7 +164,6 @@ public class MenuNinio extends MenuFrame {
     
     private void crearMenuEjemplo(){
         int x=0;
-        String[] simbolo={"+","+","+","+","-","-","-","x","x","x","/","/","/"};
         IrEjemploActionListener[] irEjemplo = new IrEjemploActionListener[13];
         menuEjemplo = new JPanel();
         menuEjemplo.setLayout(new GridLayout(7,2));
@@ -184,22 +182,25 @@ public class MenuNinio extends MenuFrame {
         temasEjemplo[10] = new JButton("Dividir con unidades");
         temasEjemplo[11] = new JButton("Dividir con decenas");
         temasEjemplo[12] = new JButton("Dividir con centenas");
+        crearEjemplos();
         for(x=0; x<13; x++){
             temasEjemplo[x].setBackground(new Color(56, 87, 35));
             temasEjemplo[x].setForeground(new Color(255, 255, 255));
             temasEjemplo[x].setBorder(null);
             temasEjemplo[x].setFont(new Font("Ubuntu", 0, 20));
-            irEjemplo[x] = new IrEjemploActionListener(
-                                    temasEjemplo[x].getText(),
-                                    simbolo[x]
-                                );
-            temasEjemplo[x].addActionListener(irEjemplo[x]);
+            if(x!=0){
+                irEjemplo[x] = new IrEjemploActionListener(ejemplos[x-1]);
+                temasEjemplo[x].addActionListener(irEjemplo[x]);
+            }
+            else{
+                temasEjemplo[0].addActionListener(
+                    new AbrirSistemaNumericoActionListener()
+                );
+            }
+            
             menuEjemplo.add(temasEjemplo[x]);
         }
-        temasEjemplo[0].removeActionListener(irEjemplo[0]);
-        temasEjemplo[0].addActionListener(
-                new AbrirSistemaNumericoActionListener()
-        );
+        
     }
     
     private void crearMenuEjercicio(){
@@ -226,11 +227,7 @@ public class MenuNinio extends MenuFrame {
             temasEjercicio[x].setForeground(new Color(255, 255, 255));
             temasEjercicio[x].setBorder(null);
             temasEjercicio[x].setFont(new Font("Ubuntu", 0, 20));
-            temasEjercicio[x].addActionListener(
-                    new IrEjercicioActionListener(
-                            temasEjercicio[x].getText(), simbolo[x]
-                    )
-            );
+            temasEjercicio[x].addActionListener(new IrEjercicioActionListener());
             menuEjercicio.add(temasEjercicio[x]);
         }
     }
@@ -278,31 +275,83 @@ public class MenuNinio extends MenuFrame {
     
     private void crearEjemplos(){
         ejemplos = new Ejemplo[12];
-        Operacion[] operaciones = new Operacion[6];
-        char[] signos = {'+','-','x','/'};
-        int a, b=0;
-        for(a=0; a<4; a++){
-            operaciones[0] = new Operacion(6, 3, signos[a]);
-            operaciones[1] = new Operacion(2, 1, signos[a]);
-            operaciones[2] = new Operacion(5, 6, signos[a]);
-            operaciones[3] = new Operacion(9, 1, signos[a]);
-            operaciones[4] = new Operacion(2, 3, signos[a]);
-            operaciones[5] = new Operacion(8, 4, signos[a]);
-            ejemplos[b++] = new Ejemplo(operaciones);
-            operaciones[0] = new Operacion(21, 3, signos[a]);
-            operaciones[1] = new Operacion(90, 45, signos[a]);
-            operaciones[2] = new Operacion(35, 7, signos[a]);
-            operaciones[3] = new Operacion(24, 6, signos[a]);
-            operaciones[4] = new Operacion(56, 8, signos[a]);
-            operaciones[5] = new Operacion(56, 7, signos[a]);
-            ejemplos[b++] = new Ejemplo(operaciones);
-            operaciones[0] = new Operacion(842, 421, signos[a]);
-            operaciones[1] = new Operacion(800, 200, signos[a]);
-            operaciones[2] = new Operacion(150, 50, signos[a]);
-            operaciones[3] = new Operacion(300, 60, signos[a]);
-            operaciones[4] = new Operacion(400, 100, signos[a]);
-            operaciones[5] = new Operacion(624, 208, signos[a]);
-            ejemplos[b++] = new Ejemplo(operaciones);
+        Operacion[][] operaciones = new Operacion[12][6];
+        operaciones[0][0] = new Operacion(1, 3, '+');
+        operaciones[0][1] = new Operacion(2, 0, '+');
+        operaciones[0][2] = new Operacion(5, 6, '+');
+        operaciones[0][3] = new Operacion(9, 1, '+');
+        operaciones[0][4] = new Operacion(2, 3, '+');
+        operaciones[0][5] = new Operacion(8, 4, '+');
+        operaciones[1][0] = new Operacion(11, 3, '+');
+        operaciones[1][1] = new Operacion(22, 5, '+');
+        operaciones[1][2] = new Operacion(35, 16, '+');
+        operaciones[1][3] = new Operacion(90, 9, '+');
+        operaciones[1][4] = new Operacion(46, 33, '+');
+        operaciones[1][5] = new Operacion(58, 10, '+');
+        operaciones[2][0] = new Operacion(111, 23, '+');
+        operaciones[2][1] = new Operacion(822, 137, '+');
+        operaciones[2][2] = new Operacion(305, 216, '+');
+        operaciones[2][3] = new Operacion(964, 49, '+');
+        operaciones[2][4] = new Operacion(587, 197, '+');
+        operaciones[2][5] = new Operacion(444, 333, '+');
+        operaciones[3][0] = new Operacion(6, 3, '-');
+        operaciones[3][1] = new Operacion(2, 0, '-');
+        operaciones[3][2] = new Operacion(9, 2, '-');
+        operaciones[3][3] = new Operacion(5, 5, '-');
+        operaciones[3][4] = new Operacion(2, 3, '-');
+        operaciones[3][5] = new Operacion(8, 4, '-');
+        operaciones[4][0] = new Operacion(11, 3, '-');
+        operaciones[4][1] = new Operacion(22, 5, '-');
+        operaciones[4][2] = new Operacion(35, 16, '-');
+        operaciones[4][3] = new Operacion(90, 9, '-');
+        operaciones[4][4] = new Operacion(46, 33, '-');
+        operaciones[4][5] = new Operacion(58, 10, '-');
+        operaciones[5][0] = new Operacion(111, 23, '-');
+        operaciones[5][1] = new Operacion(822, 137, '-');
+        operaciones[5][2] = new Operacion(305, 216, '-');
+        operaciones[5][3] = new Operacion(964, 49, '-');
+        operaciones[5][4] = new Operacion(587, 197, '-');
+        operaciones[5][5] = new Operacion(444, 333, '-');
+        operaciones[6][0] = new Operacion(6, 3, 'x');
+        operaciones[6][1] = new Operacion(2, 0, 'x');
+        operaciones[6][2] = new Operacion(9, 2, 'x');
+        operaciones[6][3] = new Operacion(5, 5, 'x');
+        operaciones[6][4] = new Operacion(2, 3, 'x');
+        operaciones[6][5] = new Operacion(8, 4, 'x');
+        operaciones[7][0] = new Operacion(11, 3, 'x');
+        operaciones[7][1] = new Operacion(22, 5, 'x');
+        operaciones[7][2] = new Operacion(35, 16, 'x');
+        operaciones[7][3] = new Operacion(90, 9, 'x');
+        operaciones[7][4] = new Operacion(46, 33, 'x');
+        operaciones[7][5] = new Operacion(58, 10, 'x');
+        operaciones[8][0] = new Operacion(111, 23, 'x');
+        operaciones[8][1] = new Operacion(822, 137, 'x');
+        operaciones[8][2] = new Operacion(305, 216, 'x');
+        operaciones[8][3] = new Operacion(964, 49, 'x');
+        operaciones[8][4] = new Operacion(587, 197, 'x');
+        operaciones[8][5] = new Operacion(444, 333, 'x');
+        operaciones[9][0] = new Operacion(6, 3, '/');
+        operaciones[9][1] = new Operacion(2, 1, '/');
+        operaciones[9][2] = new Operacion(4, 2, '/');
+        operaciones[9][3] = new Operacion(7, 7, '/');
+        operaciones[9][4] = new Operacion(9, 3, '/');
+        operaciones[9][5] = new Operacion(8, 2, '/');
+        operaciones[10][0] = new Operacion(21, 3, '/');
+        operaciones[10][1] = new Operacion(90, 45, '/');
+        operaciones[10][2] = new Operacion(35, 7, '/');
+        operaciones[10][3] = new Operacion(24, 6, '/');
+        operaciones[10][4] = new Operacion(56, 8, '/');
+        operaciones[10][5] = new Operacion(56, 7, '/');
+        operaciones[11][0] = new Operacion(842, 421, '/');
+        operaciones[11][1] = new Operacion(800, 200, '/');
+        operaciones[11][2] = new Operacion(150, 50, '/');
+        operaciones[11][3] = new Operacion(300, 60, '/');
+        operaciones[11][4] = new Operacion(400, 100, '/');
+        operaciones[11][5] = new Operacion(624, 208, '/');
+        for(int x=0; x<12; x++){
+            ejemplos[x] = new Ejemplo(
+                    operaciones[x], temasEjemplo[x+1].getText()
+            );
         }
     }
     
