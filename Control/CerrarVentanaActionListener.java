@@ -4,6 +4,7 @@ package Control;
 import GUI.EjemploFrame;
 import GUI.Ejercicio;
 import GUI.JuegoFrame;
+import GUI.MultiplicarDecenasFrame;
 import GUI.SistemaNumericoFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,6 +30,9 @@ public class CerrarVentanaActionListener implements ActionListener {
         }
         else if(ventana instanceof SistemaNumericoFrame){
             ((SistemaNumericoFrame)ventana).destruir();
+        }
+        else if(ventana instanceof MultiplicarDecenasFrame){
+            ((MultiplicarDecenasFrame)ventana).destruir();
         }
         ventana.dispose();
     }
