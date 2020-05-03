@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import static javax.swing.SwingConstants.CENTER;
+import javax.swing.SwingConstants;
 
 
 public class JuegoFrame extends JFrame {
@@ -45,8 +45,8 @@ public class JuegoFrame extends JFrame {
         etiqueta.setLocation(0, 10);
         etiqueta.setFont(new Font("Ubuntu", 0, 35));
         etiqueta.setForeground(new Color(255, 255, 255));
-        etiqueta.setHorizontalAlignment(CENTER);
-        etiqueta.setVerticalAlignment(CENTER);
+        etiqueta.setHorizontalAlignment(SwingConstants.CENTER);
+        etiqueta.setVerticalAlignment(SwingConstants.CENTER);
         contenedor.add(etiqueta);
         atras = new JButton();
         atras.setSize(50, 50);
@@ -114,16 +114,20 @@ public class JuegoFrame extends JFrame {
     }
     
     public void destruir(){
-        int x=0;
+        int tamanio=0,
+            x=0;
         if(atras!=null){
             atras=null;
         }
         if(calificar!=null){
             calificar=null;
         }
-        for(x=0; x<14; x++){
-            if(crucigrama[x]!=null){
-                crucigrama[x]=null;
+        if(crucigrama!=null){
+            tamanio=crucigrama.length;
+            for(x=0; x<tamanio; x++){
+                if(crucigrama[x]!=null){
+                    crucigrama[x]=null;
+                }
             }
         }
         if(contenedor!=null){

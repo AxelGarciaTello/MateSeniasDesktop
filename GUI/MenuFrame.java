@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import static javax.swing.SwingConstants.CENTER;
+import javax.swing.SwingConstants;
 
 
 public class MenuFrame extends JFrame {
@@ -34,16 +34,16 @@ public class MenuFrame extends JFrame {
         JLabel titulo = new JLabel("Mate con señas");
         titulo.setFont(new Font("Ubuntu", 0, 35));
         titulo.setForeground(new Color(255, 255, 255));
-        titulo.setHorizontalAlignment(CENTER);
-        titulo.setVerticalAlignment(CENTER);
+        titulo.setHorizontalAlignment(SwingConstants.CENTER);
+        titulo.setVerticalAlignment(SwingConstants.CENTER);
         icono = new JLabel();
         icono.setIcon(
                 new ImageIcon(
                         getClass().getResource("Iconos/Icono.png")
                 )
         );
-        icono.setHorizontalAlignment(CENTER);
-        icono.setVerticalAlignment(CENTER);
+        icono.setHorizontalAlignment(SwingConstants.CENTER);
+        icono.setVerticalAlignment(SwingConstants.CENTER);
         contenedor = this.getContentPane();
         contenedor.setBackground(new Color(56, 87, 35));
         contenedor.setLayout(new BorderLayout());

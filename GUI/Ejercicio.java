@@ -62,11 +62,15 @@ public class Ejercicio extends EjemploFrame {
     
     @Override
     public void destruir(){
-        int x=0;
+        int tamanio=0,
+            x=0;
         super.destruir();
-        for(x=0; x<18; x++){
-            if(respuestas[x]!=null){
-                respuestas[x]=null;
+        if(respuestas!=null){
+            tamanio=respuestas.length;
+            for(x=0; x<tamanio; x++){
+                if(respuestas[x]!=null){
+                    respuestas[x]=null;
+                }
             }
         }
         if(calificar!=null){

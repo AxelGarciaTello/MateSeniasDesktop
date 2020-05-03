@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import static javax.swing.SwingConstants.CENTER;
+import javax.swing.SwingConstants;
 
 
 public class SistemaNumericoFrame extends JFrame {
@@ -58,8 +58,8 @@ public class SistemaNumericoFrame extends JFrame {
         titulo.setLocation(0, 10);
         titulo.setFont(new Font("Ubuntu", 0, 35));
         titulo.setForeground(new Color(255, 255, 255));
-        titulo.setHorizontalAlignment(CENTER);
-        titulo.setVerticalAlignment(CENTER);
+        titulo.setHorizontalAlignment(SwingConstants.CENTER);
+        titulo.setVerticalAlignment(SwingConstants.CENTER);
         contenedor.add(titulo);
         JLabel[] bloques = new JLabel[3];
         bloques[0] = new JLabel("Unidades");
@@ -96,7 +96,7 @@ public class SistemaNumericoFrame extends JFrame {
             numeros[x].setSize(40, 40);
             numeros[x].setFont(new Font("Ubuntu", 0, 20));
             numeros[x].setEditable(false);
-            numeros[x].setHorizontalAlignment(CENTER);
+            numeros[x].setHorizontalAlignment(SwingConstants.CENTER);
             contenedor.add(numeros[x]);
         }
         xp=145;
@@ -141,20 +141,24 @@ public class SistemaNumericoFrame extends JFrame {
         }
         for(x=0; x<26; x++){
             flechas[x].setSize(85, 40);
-            flechas[x].setHorizontalAlignment(CENTER);
-            flechas[x].setVerticalAlignment(CENTER);
+            flechas[x].setHorizontalAlignment(SwingConstants.CENTER);
+            flechas[x].setVerticalAlignment(SwingConstants.CENTER);
             contenedor.add(flechas[x]);
         }
     }
     
     public void destruir(){
-        int x;
+        int tamanio=0,
+            x=0;
         if(atras!=null){
             atras=null;
         }
-        for(x=0; x<28; x++){
-            if(numeros[x]!=null){
-                numeros[x]=null;
+        if(numeros!=null){
+            tamanio=numeros.length;
+            for(x=0; x<tamanio; x++){
+                if(numeros[x]!=null){
+                    numeros[x]=null;
+                }
             }
         }
         if(contenedor!=null){

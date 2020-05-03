@@ -11,10 +11,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPopupMenu.Separator;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
-import static javax.swing.SwingConstants.CENTER;
+import javax.swing.SwingConstants;
 
 
 public class EjemploFrame extends JFrame {
@@ -55,8 +54,8 @@ public class EjemploFrame extends JFrame {
         etiqueta.setLocation(0, 10);
         etiqueta.setFont(new Font("Ubuntu", 0, 35));
         etiqueta.setForeground(new Color(255, 255, 255));
-        etiqueta.setHorizontalAlignment(CENTER);
-        etiqueta.setVerticalAlignment(CENTER);
+        etiqueta.setHorizontalAlignment(SwingConstants.CENTER);
+        etiqueta.setVerticalAlignment(SwingConstants.CENTER);
         contenedor.add(etiqueta);
         atras = new JButton();
         atras.setSize(50, 50);
@@ -120,7 +119,7 @@ public class EjemploFrame extends JFrame {
         JSeparator[] separador = new JSeparator[6];
         xs=60;
         for(a=0; a<6; a++){
-            separador[a] = new Separator();
+            separador[a] = new JSeparator();
             separador[a].setSize(65, 2);
             separador[a].setBackground(new Color(255, 255, 255));
             separador[a].setLocation(xs, 142);
@@ -130,17 +129,25 @@ public class EjemploFrame extends JFrame {
     }
     
     public void destruir(){
-        int x=0;
+        int tamanio=0,
+            x=0;
         if(atras!=null){
             atras=null;
         }
-        for(x=0; x<18; x++){
-            if(numeros[x]!=null){
-                numeros[x]=null;
+        if(numeros!=null){
+            tamanio=numeros.length;
+            for(x=0; x<tamanio; x++){
+                if(numeros[x]!=null){
+                    numeros[x]=null;
+                }
             }
         }
         if(contenedor!=null){
             contenedor=null;
+        }
+        if(ejemplo!=null){
+            ejemplo.destruir();
+            ejemplo=null;
         }
         System.gc();
     }

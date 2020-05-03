@@ -79,10 +79,17 @@ public class OpcionesFrame extends JFrame {
     }
     
     public void destruir(){
-        int x=0;
-        for(x=0; x<15; x++){
-            if(opciones[x]!=null){
-                opciones[x]=null;
+        int tamanio=0,
+            x=0;
+        if(proveniente!=null){
+            proveniente=null;
+        }
+        if(opciones!=null){
+            tamanio=opciones.length;
+            for(x=0; x<tamanio; x++){
+                if(opciones[x]!=null){
+                    opciones[x]=null;
+                }
             }
         }
         if(contenedor!=null){
