@@ -6,6 +6,7 @@ import Control.AbrirVideoActionListener;
 import Control.IrEjemploActionListener;
 import Control.IrEjercicioActionListener;
 import Control.IrJuegoActionListener;
+import Control.IrMultiplicarDecenasActionListener;
 import Control.SeleccionarMenuNinioActionListener;
 import Logico.Ejemplo;
 import Logico.Ninio;
@@ -197,10 +198,12 @@ public class MenuNinio extends MenuFrame {
                     new AbrirSistemaNumericoActionListener()
                 );
             }
-            
             menuEjemplo.add(temasEjemplo[x]);
         }
-        
+        temasEjemplo[8].removeActionListener(irEjemplo[8]);
+        temasEjemplo[8].addActionListener(
+                new IrMultiplicarDecenasActionListener()
+        );
     }
     
     private void crearMenuEjercicio(){
@@ -357,7 +360,8 @@ public class MenuNinio extends MenuFrame {
     
     @Override
     public void destruir(){
-        int x;
+        int tamanio=0,
+            x=0;
         super.destruir();
         if(video!=null){
             video=null;
@@ -374,22 +378,37 @@ public class MenuNinio extends MenuFrame {
         if(salir!=null){
             salir=null;
         }
-        for(x=0; x<12; x++){
-            if(temasVideo[x]!=null){
-                temasVideo[x]=null;
-            }
-            if(temasEjemplo[x]!=null){
-                temasEjemplo[x]=null;
-            }
-            if(temasEjercicio[x]!=null){
-                temasEjercicio[x]=null;
-            }
-            if(temasJuego[x]!=null){
-                temasJuego[x]=null;
+        if(temasVideo!=null){
+            tamanio=temasVideo.length;
+            for(x=0; x<tamanio; x++){
+                if(temasVideo[x]!=null){
+                    temasVideo[x]=null;
+                }
             }
         }
-        if(temasEjemplo[12]!=null){
-            temasEjemplo[12]=null;
+        if(temasEjemplo!=null){
+            tamanio=temasEjemplo.length;
+            for(x=0; x<tamanio; x++){
+                if(temasEjemplo[x]!=null){
+                    temasEjemplo[x]=null;
+                }
+            }
+        }
+        if(temasEjercicio!=null){
+            tamanio=temasEjercicio.length;
+            for(x=0; x<tamanio; x++){
+                if(temasEjercicio[x]!=null){
+                    temasEjercicio[x]=null;
+                }
+            }
+        }
+        if(temasJuego!=null){
+            tamanio=temasJuego.length;
+            for(x=0; x<tamanio; x++){
+                if(temasJuego[x]!=null){
+                    temasJuego[x]=null;
+                }
+            }
         }
         if(menu!=null){
             menu=null;
@@ -412,10 +431,12 @@ public class MenuNinio extends MenuFrame {
         if(supermenu!=null){
             supermenu=null;
         }
-        for(x=0; x<12; x++){
-            if(ejemplos[x]!=null){
-                ejemplos[x].destruir();
-                ejemplos[x]=null;
+        if(ejemplos!=null){
+            tamanio=ejemplos.length;
+            for(x=0; x<tamanio; x++){
+                if(ejemplos[x]!=null){
+                    ejemplos[x]=null;
+                }
             }
         }
         System.gc();
