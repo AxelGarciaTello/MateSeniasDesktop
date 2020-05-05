@@ -6,6 +6,7 @@ import Control.AbrirVideoActionListener;
 import Control.IrEjemploActionListener;
 import Control.IrEjercicioActionListener;
 import Control.IrJuegoActionListener;
+import Control.IrMultiplicarCentenasActionListener;
 import Control.IrMultiplicarDecenasActionListener;
 import Control.SeleccionarMenuNinioActionListener;
 import Logico.Ejemplo;
@@ -203,6 +204,10 @@ public class MenuNinio extends MenuFrame {
         temasEjemplo[8].removeActionListener(irEjemplo[8]);
         temasEjemplo[8].addActionListener(
                 new IrMultiplicarDecenasActionListener()
+        );
+        temasEjemplo[9].removeActionListener(irEjemplo[9]);
+        temasEjemplo[9].addActionListener(
+                new IrMultiplicarCentenasActionListener()
         );
     }
     
