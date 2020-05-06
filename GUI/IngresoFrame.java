@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 
 public class IngresoFrame extends JFrame{
     private JTextField nombreUsuario;
-    public Container contenedor;
+    private Container contenedor;
     
     public IngresoFrame(){
         super("Iniciar sesion");
@@ -59,6 +59,10 @@ public class IngresoFrame extends JFrame{
             contenedor=null;
         }
         System.gc();
+    }
+    
+    public Container getContenedor(){
+        return contenedor;
     }
     
 }

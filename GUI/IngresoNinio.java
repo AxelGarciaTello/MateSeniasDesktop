@@ -4,6 +4,7 @@ package GUI;
 import Control.IngresarNinioActionListener;
 import Control.IrIngresoTutorActionListener;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Font;
 import javax.swing.JButton;
 
@@ -11,6 +12,7 @@ import javax.swing.JButton;
 public class IngresoNinio extends IngresoFrame {
     private JButton ingresar;
     private JButton cambiarCuenta;
+    private Container contenedor;
     
     public IngresoNinio(){
         super();
@@ -18,6 +20,7 @@ public class IngresoNinio extends IngresoFrame {
     }
     
     private void initComponents(){
+        contenedor = super.getContenedor();
         ingresar = new JButton("Ingresar");
         ingresar.setSize(200, 30);
         ingresar.setLocation(50, 200);
@@ -32,8 +35,8 @@ public class IngresoNinio extends IngresoFrame {
         cambiarCuenta.setForeground(new Color(255, 255, 255));
         cambiarCuenta.setBorder(null);
         cambiarCuenta.setFont(new Font("Ubuntu", 0, 20));
-        super.contenedor.add(ingresar);
-        super.contenedor.add(cambiarCuenta);
+        contenedor.add(ingresar);
+        contenedor.add(cambiarCuenta);
         ingresar.addActionListener(
                 new IngresarNinioActionListener(this)
         );
@@ -50,6 +53,9 @@ public class IngresoNinio extends IngresoFrame {
         }
         if(cambiarCuenta!=null){
             cambiarCuenta=null;
+        }
+        if(contenedor!=null){
+            contenedor=null;
         }
         System.gc();
     }

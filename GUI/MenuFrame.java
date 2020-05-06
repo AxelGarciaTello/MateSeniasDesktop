@@ -13,8 +13,8 @@ import javax.swing.SwingConstants;
 
 
 public class MenuFrame extends JFrame {
-    public Container contenedor;
-    public JLabel icono;
+    private Container contenedor;
+    private JLabel icono;
     
     public MenuFrame(){
         super("Mate con señas");
@@ -58,6 +58,10 @@ public class MenuFrame extends JFrame {
             icono=null;
         }
         System.gc();
+    }
+    
+    public JLabel getIcono(){
+        return icono;
     }
     
     public void agregarMenu(JPanel menu){
