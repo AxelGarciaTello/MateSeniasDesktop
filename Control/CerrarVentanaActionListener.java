@@ -2,7 +2,7 @@
 package Control;
 
 import GUI.EjemploFrame;
-import GUI.Ejercicio;
+import GUI.EjercicioFrame;
 import GUI.JuegoFrame;
 import GUI.MultiplicarCentenasFrame;
 import GUI.MultiplicarDecenasFrame;
@@ -23,8 +23,8 @@ public class CerrarVentanaActionListener implements ActionListener {
         if(ventana instanceof EjemploFrame){
             ((EjemploFrame)ventana).destruir();
         }
-        else if(ventana instanceof Ejercicio){
-            ((Ejercicio)ventana).destruir();
+        else if(ventana instanceof EjercicioFrame){
+            ((EjercicioFrame)ventana).destruir();
         }
         else if(ventana instanceof JuegoFrame){
             ((JuegoFrame)ventana).destruir();
