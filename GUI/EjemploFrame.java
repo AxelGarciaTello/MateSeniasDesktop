@@ -17,9 +17,9 @@ import javax.swing.SwingConstants;
 
 
 public class EjemploFrame extends JFrame {
-    public JButton atras;
+    private JButton atras;
     private JTextField[] numeros;
-    public Container contenedor;
+    private Container contenedor;
     private Ejemplo ejemplo;
     
     public EjemploFrame(Ejemplo ejemplo){
@@ -128,6 +128,10 @@ public class EjemploFrame extends JFrame {
         }
     }
     
+    public Container getContenedor(){
+        return contenedor;
+    }
+    
     public void destruir(){
         int tamanio=0,
             x=0;
@@ -145,11 +149,24 @@ public class EjemploFrame extends JFrame {
         if(contenedor!=null){
             contenedor=null;
         }
-        if(ejemplo!=null){
-            ejemplo.destruir();
-            ejemplo=null;
-        }
         System.gc();
+    }
+    
+    public JButton getAtras(){
+        return atras;
+    }
+    
+    public JTextField getNumeros(int x){
+        return numeros[x];
+    }
+    
+    public void ocultarRespuestas(){
+        int n=2,
+            x=0;
+        for(x=0; x<6; x++){
+            numeros[n].setText("");
+            n+=3;
+        }
     }
     
 }

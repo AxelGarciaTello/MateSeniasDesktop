@@ -2,26 +2,42 @@
 package GUI;
 
 import Control.CerrarVentanaActionListener;
-import Logico.Ejemplo;
+import Control.SeleccionarRespuestaActionListener;
+import Logico.Ejercicio;
+import Logico.Opcion;
+import Logico.Progreso;
 import java.awt.Color;
+import java.awt.Container;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class Ejercicio extends EjemploFrame {
+public class EjercicioFrame extends EjemploFrame {
+    private JButton atras;
     private JButton[] respuestas;
     private JButton calificar;
     private JButton reintentar;
+    private Container contenedor;
+    private Ejercicio ejercicio;
+    private Progreso progreso;
     
-    public Ejercicio() {
-        super(new Ejemplo());
+    public EjercicioFrame(Ejercicio ejercicio, Progreso progreso) {
+        super(ejercicio);
+        this.ejercicio=ejercicio;
+        this.progreso=progreso;
         initComponents();
+        super.ocultarRespuestas();
     }
     
     private void initComponents(){
         int a=0,
             b=0,
+            c=0,
+            d=1,
+            e=2,
             x=60,
             y=200;
+        contenedor = super.getContenedor();
+        Opcion[] opciones = ejercicio.getOpciones();
         respuestas = new JButton[18];
         for(a=0; a<18; a++){
             respuestas[a] = new JButton("000");
@@ -37,7 +53,21 @@ public class Ejercicio extends EjemploFrame {
             respuestas[a].setBackground(new Color(47, 55, 74));
             respuestas[a].setForeground(new Color(255, 255, 255));
             respuestas[a].setBorder(null);
-            super.contenedor.add(respuestas[a]);
+            respuestas[a].setText(String.valueOf(opciones[c].getOpcion(d)));
+            respuestas[a].addActionListener(
+                    new SeleccionarRespuestaActionListener(
+                            respuestas[a].getText(), super.getNumeros(e)
+                    )
+            );
+            if(d==3){
+                c++;
+                d=1;
+                e+=3;
+            }
+            else{
+                d++;
+            }
+            contenedor.add(respuestas[a]);
         }
         calificar = new JButton();
         calificar.setSize(50, 50);
@@ -55,7 +85,8 @@ public class Ejercicio extends EjemploFrame {
         reintentar.setSize(250,30);
         reintentar.setVisible(false);
         contenedor.add(reintentar);
-        super.atras.addActionListener(
+        atras=super.getAtras();
+        atras.addActionListener(
                 new CerrarVentanaActionListener(this)
         );
     }
@@ -65,6 +96,9 @@ public class Ejercicio extends EjemploFrame {
         int tamanio=0,
             x=0;
         super.destruir();
+        if(atras!=null){
+            atras=null;
+        }
         if(respuestas!=null){
             tamanio=respuestas.length;
             for(x=0; x<tamanio; x++){
@@ -79,6 +113,10 @@ public class Ejercicio extends EjemploFrame {
         if(reintentar!=null){
             reintentar=null;
         }
+        if(contenedor!=null){
+            contenedor=null;
+        }
+        System.gc();
     }
     
 }
