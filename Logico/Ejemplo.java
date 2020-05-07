@@ -39,4 +39,8 @@ public class Ejemplo {
         return operaciones;
     }
     
+    public int getRespuesta(int x){
+        return operaciones[x].getRespuesta();
+    }
+    
 }

@@ -37,10 +37,6 @@ public class Operacion {
         return respuesta;
     }
     
-    public void setSigno(char signo){
-        this.signo=signo;
-    }
-    
     private void calcularRespuesta(){
         switch(signo){
             case '+':
