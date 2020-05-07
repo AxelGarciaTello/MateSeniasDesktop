@@ -165,6 +165,7 @@ public class EjemploFrame extends JFrame {
             x=0;
         for(x=0; x<6; x++){
             numeros[n].setText("");
+            numeros[n].setBackground(new Color(255, 255, 255));
             n+=3;
         }
     }

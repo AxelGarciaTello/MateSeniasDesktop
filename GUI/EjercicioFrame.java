@@ -1,7 +1,9 @@
 
 package GUI;
 
+import Control.CalificarEjercicioActionListener;
 import Control.CerrarVentanaActionListener;
+import Control.ReintentarEjercicioActionListener;
 import Control.SeleccionarRespuestaActionListener;
 import Logico.Ejercicio;
 import Logico.Opcion;
@@ -10,12 +12,14 @@ import java.awt.Color;
 import java.awt.Container;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 public class EjercicioFrame extends EjemploFrame {
     private JButton atras;
     private JButton[] respuestas;
     private JButton calificar;
     private JButton reintentar;
+    private JTextField[] cajaRespuestas;
     private Container contenedor;
     private Ejercicio ejercicio;
     private Progreso progreso;
@@ -38,6 +42,7 @@ public class EjercicioFrame extends EjemploFrame {
             y=200;
         contenedor = super.getContenedor();
         Opcion[] opciones = ejercicio.getOpciones();
+        cajaRespuestas = new JTextField[6];
         respuestas = new JButton[18];
         for(a=0; a<18; a++){
             respuestas[a] = new JButton("000");
@@ -54,9 +59,10 @@ public class EjercicioFrame extends EjemploFrame {
             respuestas[a].setForeground(new Color(255, 255, 255));
             respuestas[a].setBorder(null);
             respuestas[a].setText(String.valueOf(opciones[c].getOpcion(d)));
+            cajaRespuestas[c] = super.getNumeros(e);
             respuestas[a].addActionListener(
                     new SeleccionarRespuestaActionListener(
-                            respuestas[a].getText(), super.getNumeros(e)
+                            respuestas[a].getText(), cajaRespuestas[c]
                     )
             );
             if(d==3){
@@ -69,6 +75,19 @@ public class EjercicioFrame extends EjemploFrame {
             }
             contenedor.add(respuestas[a]);
         }
+        reintentar = new JButton("Intentarlo otra vez");
+        reintentar.setLocation(175, 300);
+        reintentar.setSize(250,30);
+        reintentar.setVisible(false);
+        reintentar.setBackground(new Color(56, 87, 35));
+        reintentar.setForeground(new Color(255, 255, 255));
+        //reintentar.setBorder(null);
+        reintentar.addActionListener(
+                new ReintentarEjercicioActionListener(
+                        cajaRespuestas, reintentar
+                )
+        );
+        contenedor.add(reintentar);
         calificar = new JButton();
         calificar.setSize(50, 50);
         calificar.setIcon(
@@ -79,12 +98,12 @@ public class EjercicioFrame extends EjemploFrame {
         calificar.setLocation(540, 10);
         calificar.setBackground(new Color(56, 87, 35));
         calificar.setBorder(null);
+        calificar.addActionListener(
+                new CalificarEjercicioActionListener(
+                        cajaRespuestas, progreso, ejercicio, reintentar
+                )
+        );
         contenedor.add(calificar);
-        reintentar = new JButton("Intentarlo otra vez");
-        reintentar.setLocation(175, 300);
-        reintentar.setSize(250,30);
-        reintentar.setVisible(false);
-        contenedor.add(reintentar);
         atras=super.getAtras();
         atras.addActionListener(
                 new CerrarVentanaActionListener(this)
