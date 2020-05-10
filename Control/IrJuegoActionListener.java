@@ -2,21 +2,25 @@
 package Control;
 
 import GUI.JuegoFrame;
+import Logico.Juego;
+import Logico.Progreso;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
 public class IrJuegoActionListener implements ActionListener {
-    private String titulo;
+    private Juego juego;
+    private Progreso progreso;
     
-    public IrJuegoActionListener(String titulo){
-        this.titulo=titulo;
+    public IrJuegoActionListener(Juego juego, Progreso progreso){
+        this.juego=juego;
+        this.progreso=progreso;
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        JuegoFrame juego = new JuegoFrame(titulo);
-        juego.setVisible(true);
+        JuegoFrame juegoVentana = new JuegoFrame(juego, progreso);
+        juegoVentana.setVisible(true);
     }
     
 }
