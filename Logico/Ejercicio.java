@@ -5,7 +5,8 @@ package Logico;
 public class Ejercicio extends Ejemplo {
     private Opcion[] opciones;
     
-    public Ejercicio(Operacion[] operaciones, Opcion[] opciones, String tema){
+    public Ejercicio(Operacion[] operaciones,
+            Opcion[] opciones, String tema){
         super(operaciones, tema);
         this.opciones=opciones;
     }
@@ -30,11 +31,12 @@ public class Ejercicio extends Ejemplo {
         return opciones;
     }
     
-    public boolean[] calificar(int[] respuestas, Progreso progreso){
+    public boolean[] calificar(int[] respuestas,
+            Progreso progreso){
         int tamanio=opciones.length,
             x=0,
             nuevoProgreso=0;
-        boolean[] aciertos = new boolean[opciones.length];
+        boolean[] aciertos = new boolean[tamanio];
         for(x=0; x<tamanio; x++){
             if(super.getRespuesta(x)==respuestas[x]){
                 aciertos[x]=true;
