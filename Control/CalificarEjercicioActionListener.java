@@ -34,19 +34,26 @@ public class CalificarEjercicioActionListener implements ActionListener {
         for(x=0; x<tamanio; x++){
             if(cajaRespuestas[x].getText().equals("")){
                 JOptionPane.showMessageDialog(
-                        null, "No se contesto todos los problemas", "Error", 1
+                        null, "No se contesto todos los "
+                                + "problemas", "Error", 1
                 );
                 return;
             }
-            respuestas[x]=Integer.parseInt(cajaRespuestas[x].getText());
+            respuestas[x]=Integer.parseInt(
+                    cajaRespuestas[x].getText()
+            );
         }
         aciertos = ejercicio.calificar(respuestas, progreso);
         for(x=0; x<tamanio; x++){
             if(aciertos[x]){
-                cajaRespuestas[x].setBackground(new Color(133, 196, 120));
+                cajaRespuestas[x].setBackground(
+                        new Color(133, 196, 120)
+                );
             }
             else{
-                cajaRespuestas[x].setBackground(new Color(255, 105, 97));
+                cajaRespuestas[x].setBackground(
+                        new Color(255, 105, 97)
+                );
             }
         }
         reintentar.setVisible(true);
