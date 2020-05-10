@@ -1,8 +1,12 @@
 
 package GUI;
 
+import Control.CalificarJuegoActionListener;
 import Control.CerrarVentanaActionListener;
+import Control.ReintentarJuegoActionListener;
 import Control.VerOpcionesActionListener;
+import Logico.Juego;
+import Logico.Progreso;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -18,13 +22,18 @@ public class JuegoFrame extends JFrame {
     private JButton atras;
     private JButton calificar;
     private JButton[] crucigrama;
+    private JButton reintentar;
     private Container contenedor;
+    private Juego juego;
+    private Progreso progreso;
     
-    public JuegoFrame(String titulo){
-        initComponents(titulo);
+    public JuegoFrame(Juego juego, Progreso progreso){
+        this.juego=juego;
+        this.progreso=progreso;
+        initComponents();
     }
     
-    private void initComponents(String titulo){
+    private void initComponents(){
         int x=0;
         this.setSize(930, 500);
         this.setResizable(false);
@@ -40,7 +49,7 @@ public class JuegoFrame extends JFrame {
         contenedor.setBackground(new Color(0, 80, 0));
         contenedor.setLayout(null);
         contenedor.setBackground(new Color(56, 87, 35));
-        JLabel etiqueta = new JLabel("Crucigrama: "+titulo);
+        JLabel etiqueta = new JLabel("Crucigrama: "+juego.getTema());
         etiqueta.setSize(930, 35);
         etiqueta.setLocation(0, 10);
         etiqueta.setFont(new Font("Ubuntu", 0, 35));
@@ -64,7 +73,10 @@ public class JuegoFrame extends JFrame {
         contenedor.add(atras);
         crucigrama = new JButton[24];
         for(x=0; x<24; x++){
-            crucigrama[x] = new JButton("000");
+            crucigrama[x] = new JButton();
+            if(juego.getSimbolo(x, 1).equals("S")){
+                crucigrama[x].setText(juego.getSimbolo(x, 0));
+            }
             crucigrama[x].setSize(75, 75);
             crucigrama[x].setHorizontalAlignment(JTextField.CENTER);
             crucigrama[x].setBackground(new Color(47, 55, 74));
@@ -95,11 +107,25 @@ public class JuegoFrame extends JFrame {
         crucigrama[22].setLocation(275,400);
         crucigrama[23].setLocation(575,400);
         for(x=0; x<24; x++){
-            crucigrama[x].addActionListener(
+            if(juego.getSimbolo(x, 1).equals("N")){
+                crucigrama[x].addActionListener(
                     new VerOpcionesActionListener(crucigrama[x])
-            );
+                );
+            }
             contenedor.add(crucigrama[x]);
         }
+        reintentar = new JButton("Intentarlo otra vez");
+        reintentar.setSize(250, 50);
+        reintentar.setLocation(670,440);
+        reintentar.setBackground(new Color(56, 87, 35));
+        reintentar.setForeground(new Color(255, 255, 255));
+        reintentar.setVisible(false);
+        reintentar.addActionListener(
+                new ReintentarJuegoActionListener(
+                        crucigrama, juego, reintentar
+                )
+        );
+        contenedor.add(reintentar);
         calificar = new JButton();
         calificar.setSize(50, 50);
         calificar.setIcon(
@@ -110,6 +136,11 @@ public class JuegoFrame extends JFrame {
         calificar.setLocation(870,10);
         calificar.setBackground(new Color(56, 87, 35));
         calificar.setBorder(null);
+        calificar.addActionListener(
+                new CalificarJuegoActionListener(
+                        crucigrama, juego, progreso, reintentar
+                )
+        );
         contenedor.add(calificar);
     }
     
@@ -129,6 +160,9 @@ public class JuegoFrame extends JFrame {
                     crucigrama[x]=null;
                 }
             }
+        }
+        if(reintentar!=null){
+            reintentar=null;
         }
         if(contenedor!=null){
             contenedor=null;
