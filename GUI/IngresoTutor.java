@@ -2,6 +2,7 @@
 package GUI;
 
 import Control.IrIngresoNinioActionListener;
+import Control.IrRegistroActionListener;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -13,6 +14,7 @@ import javax.swing.JPasswordField;
 public class IngresoTutor extends IngresoFrame {
     private JPasswordField contrasenia;
     private JButton ingresar;
+    private JButton registrar;
     private JButton cambiarCuenta;
     private Container contenedor;
     
@@ -39,9 +41,16 @@ public class IngresoTutor extends IngresoFrame {
         ingresar.setForeground(new Color(255, 255, 255));
         ingresar.setBorder(null);
         ingresar.setFont(new Font("Ubuntu", 0, 20));
+        registrar = new JButton("Registrarse");
+        registrar.setSize(200, 30);
+        registrar.setLocation(50, 280);
+        registrar.setBackground(new Color(47, 55, 74));
+        registrar.setForeground(new Color(255, 255, 255));
+        registrar.setBorder(null);
+        registrar.setFont(new Font("Ubuntu", 0, 20));
         cambiarCuenta = new JButton("Ingresar como niño");
         cambiarCuenta.setSize(200, 30);
-        cambiarCuenta.setLocation(50, 280);
+        cambiarCuenta.setLocation(50, 315);
         cambiarCuenta.setBackground(new Color(47, 55, 74));
         cambiarCuenta.setForeground(new Color(255, 255, 255));
         cambiarCuenta.setBorder(null);
@@ -49,9 +58,13 @@ public class IngresoTutor extends IngresoFrame {
         contenedor.add(etiqueta);
         contenedor.add(contrasenia);
         contenedor.add(ingresar);
+        contenedor.add(registrar);
         contenedor.add(cambiarCuenta);
         cambiarCuenta.addActionListener(
                 new IrIngresoNinioActionListener(this)
+        );
+        registrar.addActionListener(
+                new IrRegistroActionListener(this)
         );
     }
     
@@ -63,6 +76,9 @@ public class IngresoTutor extends IngresoFrame {
         }
         if(ingresar!=null){
             ingresar=null;
+        }
+        if(registrar!=null){
+            registrar=null;
         }
         if(cambiarCuenta!=null){
             cambiarCuenta=null;
