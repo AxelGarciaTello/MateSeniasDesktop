@@ -24,6 +24,12 @@ public class SeleccionarMenuTutorActionListener implements ActionListener {
             case 1:
                 cl.show(menu, "informacion");
             break;
+            case 2:
+                cl.show(menu, "ninio");
+            break;
+            case 3:
+                System.exit(0);
+            break;
         }
     }
     
