@@ -1,6 +1,9 @@
 
 package GUI;
 
+import Control.CancelarEditadoTutor;
+import Control.EditarTutorActionListener;
+import Logico.Tutor;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -14,17 +17,21 @@ import javax.swing.SwingConstants;
 
 
 public class InformacionTutorPanel extends JPanel{
-    private JTextField nombre;
-    private JTextField correo;
-    private JPasswordField contrasenia;
-    private JPasswordField nuevaContrasenia;
-    private JPasswordField confirmacion;
-    private JButton editar;
-    private JButton eliminar;
-    private JButton guardar;
-    private JButton cancelar;
+    private JTextField nombre,
+                       correo;
+    private JTextField[] editables;
+    private JPasswordField contrasenia,
+                           nuevaContrasenia,
+                           confirmacion;
+    private JButton editar,
+                    eliminar,
+                    guardar,
+                    cancelar;
+    private Object[] paquete;
+    private Tutor tutor;
     
-    public InformacionTutorPanel(){
+    public InformacionTutorPanel(Tutor tutor){
+        this.tutor=tutor;
         initComponents();
     }
     
@@ -57,9 +64,9 @@ public class InformacionTutorPanel extends JPanel{
         constraints.gridwidth=2;
         this.add(titulo, constraints);
         JLabel[] etiquetas = new JLabel[5];
-        etiquetas[0] = new JLabel("Nombre");
-        etiquetas[1] = new JLabel("Correo");
-        etiquetas[2] = new JLabel("Contraseña   ");
+        etiquetas[0] = new JLabel("Nombre   ");
+        etiquetas[1] = new JLabel("Correo  ");
+        etiquetas[2] = new JLabel("Contraseña");
         etiquetas[3] = new JLabel("Nueva contraseña");
         etiquetas[4] = new JLabel("Confirmar contraseña   ");
         constraints.weightx=0.0;
@@ -70,13 +77,13 @@ public class InformacionTutorPanel extends JPanel{
             constraints.gridy=a+1;
             this.add(etiquetas[a], constraints);
         }
-        nombre = new JTextField();
+        nombre = new JTextField(tutor.getNombre());
         nombre.setFont(new Font("Ubuntu", 0, 20));
         constraints.gridx=2;
         constraints.gridy=1;
         constraints.fill=GridBagConstraints.HORIZONTAL;
         this.add(nombre, constraints);
-        correo = new JTextField();
+        correo = new JTextField(tutor.getCorreo());
         correo.setFont(new Font("Ubuntu", 0, 20));
         constraints.gridy+=1;
         this.add(correo, constraints);
@@ -135,15 +142,88 @@ public class InformacionTutorPanel extends JPanel{
         margen[4].setSize(100, 500);
         constraints.gridy+=1;
         this.add(margen[4], constraints);
+        etiquetas[2].setVisible(false);
         etiquetas[3].setVisible(false);
         etiquetas[4].setVisible(false);
         nombre.setEditable(false);
         correo.setEditable(false);
-        contrasenia.setEditable(false);
+        contrasenia.setVisible(false);
         nuevaContrasenia.setVisible(false);
         confirmacion.setVisible(false);
         guardar.setVisible(false);
         cancelar.setVisible(false);
+        paquete = new Object[12];
+        paquete[0]=etiquetas[2];
+        paquete[1]=etiquetas[3];
+        paquete[2]=etiquetas[4];
+        paquete[3]=contrasenia;
+        paquete[4]=nuevaContrasenia;
+        paquete[5]=confirmacion;
+        paquete[6]=guardar;
+        paquete[7]=cancelar;
+        paquete[8]=margen[2];
+        paquete[9]=margen[3];
+        paquete[10]=editar;
+        paquete[11]=eliminar;
+        editables = new JTextField[2];
+        editables[0]=nombre;
+        editables[1]=correo;
+        editar.addActionListener(
+                new EditarTutorActionListener(paquete, editables)
+        );
+        cancelar.addActionListener(new CancelarEditadoTutor(
+                        paquete, editables, tutor
+                )
+        );
+    }
+    
+    public void destruir(){
+        int tamanio=0,
+            x=0;
+        if(nombre!=null){
+            nombre=null;
+        }
+        if(correo!=null){
+            correo=null;
+        }
+        if(editables!=null){
+            tamanio=editables.length;
+            for(x=0; x<tamanio; x++){
+                if(editables[x]!=null){
+                    editables[x]=null;
+                }
+            }
+        }
+        if(contrasenia!=null){
+            contrasenia=null;
+        }
+        if(nuevaContrasenia!=null){
+            nuevaContrasenia=null;
+        }
+        if(confirmacion!=null){
+            confirmacion=null;
+        }
+        if(editar!=null){
+            editar=null;
+        }
+        if(eliminar!=null){
+            eliminar=null;
+        }
+        if(guardar!=null){
+            guardar=null;
+        }
+        if(cancelar!=null){
+            cancelar=null;
+        }
+        if(paquete!=null){
+            tamanio=paquete.length;
+            for(x=0; x<tamanio; x++){
+                if(paquete[x]!=null){
+                    paquete[x]=null;
+                }
+            }
+        }
+        System.gc();
     }
     
 }
