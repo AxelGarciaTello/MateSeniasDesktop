@@ -15,10 +15,10 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 public class EjercicioFrame extends EjemploFrame {
-    private JButton atras;
+    private JButton atras,
+                    calificar,
+                    reintentar;
     private JButton[] respuestas;
-    private JButton calificar;
-    private JButton reintentar;
     private JTextField[] cajaRespuestas;
     private Container contenedor;
     private Ejercicio ejercicio;

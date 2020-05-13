@@ -10,8 +10,8 @@ import javax.swing.JButton;
 
 
 public class IngresoNinio extends IngresoFrame {
-    private JButton ingresar;
-    private JButton cambiarCuenta;
+    private JButton ingresar,
+                    cambiarCuenta;
     private Container contenedor;
     
     public IngresoNinio(){

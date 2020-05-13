@@ -19,10 +19,10 @@ import javax.swing.SwingConstants;
 
 
 public class JuegoFrame extends JFrame {
-    private JButton atras;
-    private JButton calificar;
+    private JButton atras,
+                    calificar,
+                    reintentar;
     private JButton[] crucigrama;
-    private JButton reintentar;
     private Container contenedor;
     private Juego juego;
     private Progreso progreso;

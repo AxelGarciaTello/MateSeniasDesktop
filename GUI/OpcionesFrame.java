@@ -13,10 +13,10 @@ import javax.swing.JTextField;
 
 
 public class OpcionesFrame extends JFrame {
-    private JButton proveniente;
+    private JButton proveniente,
+                    aceptar;
     private JButton[] opciones;
     private JTextField dato;
-    private JButton aceptar;
     private Container contenedor;
     
     public OpcionesFrame(int x, int y, JButton proveniente){

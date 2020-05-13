@@ -23,22 +23,22 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class MenuNinio extends MenuFrame {
-    private JButton video;
-    private JButton ejemplo;
-    private JButton ejercicio;
-    private JButton juego;
-    private JButton salir;
-    private JButton[] temasVideo;
-    private JButton[] temasEjemplo;
-    private JButton[] temasEjercicio;
-    private JButton[] temasJuego;
-    private JPanel menu;
-    private JPanel menuVideo;
-    private JPanel menuEjemplo;
-    private JPanel menuEjercicio;
-    private JPanel menuJuego;
-    private JPanel fondo;
-    private JPanel supermenu;
+    private JButton video,
+                    ejemplo,
+                    ejercicio,
+                    juego,
+                    salir;
+    private JButton[] temasVideo,
+                      temasEjemplo,
+                      temasEjercicio,
+                      temasJuego;
+    private JPanel menu,
+                   menuVideo,
+                   menuEjemplo,
+                   menuEjercicio,
+                   menuJuego,
+                   fondo,
+                   supermenu;
     private Ninio ninio;
     private Ejemplo[] ejemplos;
     private Ejercicio[] ejercicios;
@@ -338,6 +338,9 @@ public class MenuNinio extends MenuFrame {
         }
         if(supermenu!=null){
             supermenu=null;
+        }
+        if(ninio!=null){
+            ninio=null;
         }
         if(ejemplos!=null){
             tamanio=ejemplos.length;
