@@ -1,6 +1,7 @@
 
 package GUI;
 
+import Control.IngresarTutorActionListener;
 import Control.IrIngresoTutorActionListener;
 import java.awt.Color;
 import java.awt.Container;
@@ -15,12 +16,12 @@ import javax.swing.SwingConstants;
 
 
 public class RegistroFrame extends JFrame {
-    private JTextField nombre;
-    private JTextField correo;
-    private JPasswordField contrasenia;
-    private JPasswordField confirmacion;
-    private JButton guardar;
-    private JButton cancelar;
+    private JTextField nombre,
+                       correo;
+    private JPasswordField contrasenia,
+                           confirmacion;
+    private JButton guardar,
+                    cancelar;
     private Container contenedor;
     
     public RegistroFrame(){
@@ -91,6 +92,9 @@ public class RegistroFrame extends JFrame {
         guardar.setBorder(null);
         guardar.setBackground(new Color(47, 55, 74));
         guardar.setForeground(new Color(255, 255, 255));
+        guardar.addActionListener(
+                new IngresarTutorActionListener(this)
+        );
         contenedor.add(guardar);
         cancelar = new JButton("Cancelar");
         cancelar.setSize(240, 30);

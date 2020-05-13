@@ -1,6 +1,7 @@
 
 package GUI;
 
+import Control.IngresarTutorActionListener;
 import Control.IrIngresoNinioActionListener;
 import Control.IrRegistroActionListener;
 import java.awt.Color;
@@ -13,9 +14,9 @@ import javax.swing.JPasswordField;
 
 public class IngresoTutor extends IngresoFrame {
     private JPasswordField contrasenia;
-    private JButton ingresar;
-    private JButton registrar;
-    private JButton cambiarCuenta;
+    private JButton ingresar,
+                    registrar,
+                    cambiarCuenta;
     private Container contenedor;
     
     public IngresoTutor(){
@@ -60,6 +61,9 @@ public class IngresoTutor extends IngresoFrame {
         contenedor.add(ingresar);
         contenedor.add(registrar);
         contenedor.add(cambiarCuenta);
+        ingresar.addActionListener(
+                new IngresarTutorActionListener(this)
+        );
         cambiarCuenta.addActionListener(
                 new IrIngresoNinioActionListener(this)
         );
