@@ -67,6 +67,10 @@ public class Ninio {
         return progresos[progreso];
     }
     
+    public Progreso[] getProgreso(){
+        return progresos;
+    }
+    
     public void setNombre(String nombre){
         this.nombre=nombre;
     }

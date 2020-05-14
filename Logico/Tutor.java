@@ -54,6 +54,10 @@ public class Tutor {
         return false;
     }
     
+    public Ninio getNinios(int x){
+        return ninios[x];
+    }
+    
     public Ninio[] getNinios(){
         return ninios;
     }
@@ -77,7 +81,26 @@ public class Tutor {
         for(x=0; x<tamanio; x++){
             nuevos[x]=ninios[x];
         }
-        nuevos[x+1]=nuevo;
+        nuevos[x]=nuevo;
+        ninios=nuevos;
+    }
+    
+    public void eliminarNinio(int posicion){
+        int tamanio=ninios.length,
+            x=0,
+            y=0;
+        Ninio[] nuevos = new Ninio[tamanio-1];
+        while(x<(tamanio-1)){
+            if(y==posicion){
+                ninios[y]=null;
+                y++;
+            }
+            else{
+                nuevos[x]=ninios[y];
+            }
+            x++;
+            y++;
+        }
         ninios=nuevos;
     }
 }
