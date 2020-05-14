@@ -2,6 +2,7 @@
 package Control;
 
 import Logico.Juego;
+import Logico.Ninio;
 import Logico.Progreso;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -13,15 +14,17 @@ import javax.swing.JOptionPane;
 public class CalificarJuegoActionListener implements ActionListener {
     private JButton[] crucigrama;
     private Juego juego;
-    private Progreso progreso;
+    private Ninio ninio;
     private JButton reintentar;
+    private int progreso;
     
     public CalificarJuegoActionListener(JButton[] crucigrama,
-            Juego juego, Progreso progreso, JButton reintentar){
+            Juego juego, Ninio ninio, JButton reintentar, int progreso){
         this.crucigrama=crucigrama;
         this.juego=juego;
-        this.progreso=progreso;
+        this.ninio=ninio;
         this.reintentar=reintentar;
+        this.progreso=progreso;
     }
 
     @Override
@@ -40,7 +43,7 @@ public class CalificarJuegoActionListener implements ActionListener {
             }
             respuestas[x]=crucigrama[x].getText();
         }
-        aciertos=juego.calificar(respuestas, progreso);
+        aciertos=juego.calificar(respuestas, ninio.getProgreso(progreso));
         for(x=0; x<tamanio; x++){
             if(aciertos[x]){
                 crucigrama[x].setBackground(

@@ -2,7 +2,7 @@
 package Control;
 
 import Logico.Ejercicio;
-import Logico.Progreso;
+import Logico.Ninio;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,16 +13,18 @@ import javax.swing.JTextField;
 
 public class CalificarEjercicioActionListener implements ActionListener {
     private JTextField[] cajaRespuestas;
-    private Progreso progreso;
+    private Ninio ninio;
     private Ejercicio ejercicio;
     private JButton reintentar;
+    private int progreso;
     
     public CalificarEjercicioActionListener(JTextField[] cajaRespuestas,
-            Progreso progreso, Ejercicio ejercicio, JButton reintentar){
+            Ninio ninio, Ejercicio ejercicio, JButton reintentar, int progreso){
         this.cajaRespuestas=cajaRespuestas;
-        this.progreso=progreso;
+        this.ninio=ninio;
         this.ejercicio=ejercicio;
         this.reintentar=reintentar;
+        this.progreso=progreso;
     }
 
     @Override
@@ -43,7 +45,7 @@ public class CalificarEjercicioActionListener implements ActionListener {
                     cajaRespuestas[x].getText()
             );
         }
-        aciertos = ejercicio.calificar(respuestas, progreso);
+        aciertos = ejercicio.calificar(respuestas, ninio.getProgreso(progreso));
         for(x=0; x<tamanio; x++){
             if(aciertos[x]){
                 cajaRespuestas[x].setBackground(
