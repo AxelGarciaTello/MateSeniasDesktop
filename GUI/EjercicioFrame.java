@@ -6,8 +6,8 @@ import Control.CerrarVentanaActionListener;
 import Control.ReintentarEjercicioActionListener;
 import Control.SeleccionarRespuestaActionListener;
 import Logico.Ejercicio;
+import Logico.Ninio;
 import Logico.Opcion;
-import Logico.Progreso;
 import java.awt.Color;
 import java.awt.Container;
 import javax.swing.ImageIcon;
@@ -22,11 +22,13 @@ public class EjercicioFrame extends EjemploFrame {
     private JTextField[] cajaRespuestas;
     private Container contenedor;
     private Ejercicio ejercicio;
-    private Progreso progreso;
+    private Ninio ninio;
+    private int progreso;
     
-    public EjercicioFrame(Ejercicio ejercicio, Progreso progreso) {
+    public EjercicioFrame(Ejercicio ejercicio, Ninio ninio, int progreso) {
         super(ejercicio);
         this.ejercicio=ejercicio;
+        this.ninio=ninio;
         this.progreso=progreso;
         initComponents();
         super.ocultarRespuestas();
@@ -100,7 +102,7 @@ public class EjercicioFrame extends EjemploFrame {
         calificar.setBorder(null);
         calificar.addActionListener(
                 new CalificarEjercicioActionListener(
-                        cajaRespuestas, progreso, ejercicio, reintentar
+                        cajaRespuestas, ninio, ejercicio, reintentar, progreso
                 )
         );
         contenedor.add(calificar);

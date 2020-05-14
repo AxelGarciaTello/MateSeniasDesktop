@@ -230,7 +230,7 @@ public class MenuNinio extends MenuFrame {
             temasEjercicio[x].setFont(new Font("Ubuntu", 0, 20));
             temasEjercicio[x].addActionListener(
                     new IrEjercicioActionListener(
-                            ejercicios[x], ninio.getProgreso(x)
+                            ejercicios[x], ninio, x
                     )
             );
             menuEjercicio.add(temasEjercicio[x]);
@@ -252,7 +252,7 @@ public class MenuNinio extends MenuFrame {
             temasJuego[x].setFont(new Font("Ubuntu", 0, 20));
             temasJuego[x].addActionListener(
                     new IrJuegoActionListener(
-                            juegos[x], ninio.getProgreso(x+12)
+                            juegos[x], ninio, (x+12)
                     )
             );
             menuJuego.add(temasJuego[x]);

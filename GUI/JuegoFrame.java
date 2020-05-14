@@ -6,7 +6,7 @@ import Control.CerrarVentanaActionListener;
 import Control.ReintentarJuegoActionListener;
 import Control.VerOpcionesActionListener;
 import Logico.Juego;
-import Logico.Progreso;
+import Logico.Ninio;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -25,10 +25,12 @@ public class JuegoFrame extends JFrame {
     private JButton[] crucigrama;
     private Container contenedor;
     private Juego juego;
-    private Progreso progreso;
+    private Ninio ninio;
+    private int progreso;
     
-    public JuegoFrame(Juego juego, Progreso progreso){
+    public JuegoFrame(Juego juego, Ninio ninio, int progreso){
         this.juego=juego;
+        this.ninio=ninio;
         this.progreso=progreso;
         initComponents();
     }
@@ -138,7 +140,7 @@ public class JuegoFrame extends JFrame {
         calificar.setBorder(null);
         calificar.addActionListener(
                 new CalificarJuegoActionListener(
-                        crucigrama, juego, progreso, reintentar
+                        crucigrama, juego, ninio, reintentar, progreso
                 )
         );
         contenedor.add(calificar);
