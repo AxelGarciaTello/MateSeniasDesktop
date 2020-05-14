@@ -3,6 +3,8 @@ package GUI;
 
 import Control.CancelarEditadoTutor;
 import Control.EditarTutorActionListener;
+import Control.EliminarTutorActionListener;
+import Control.GuardarEditadoTutor;
 import Logico.Tutor;
 import java.awt.Color;
 import java.awt.Font;
@@ -169,10 +171,21 @@ public class InformacionTutorPanel extends JPanel{
         editables[0]=nombre;
         editables[1]=correo;
         editar.addActionListener(
-                new EditarTutorActionListener(paquete, editables)
+                new EditarTutorActionListener(
+                        paquete, editables
+                )
         );
         cancelar.addActionListener(new CancelarEditadoTutor(
                         paquete, editables, tutor
+                )
+        );
+        eliminar.addActionListener(
+                new EliminarTutorActionListener(tutor)
+        );
+        guardar.addActionListener(
+                new GuardarEditadoTutor(
+                        paquete, editables, nombre, correo, contrasenia,
+                        nuevaContrasenia, confirmacion, tutor
                 )
         );
     }

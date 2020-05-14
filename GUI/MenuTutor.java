@@ -32,7 +32,7 @@ public class MenuTutor extends MenuFrame {
     private void initComponents(){
         crearFondo();
         informacionTutor = new InformacionTutorPanel(tutor);
-        informacionNinio = new InformacionNinioPanel();
+        informacionNinio = new InformacionNinioPanel(tutor);
         supermenu = new JPanel();
         supermenu.setLayout(new CardLayout());
         supermenu.add(fondo, "fondo");
