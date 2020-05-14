@@ -75,14 +75,21 @@ public class Tutor {
     }
     
     public void setNinio(Ninio nuevo){
-        int tamanio=ninios.length,
+        int tamanio=0,
             x=0;
-        Ninio[] nuevos = new Ninio[tamanio+1];
-        for(x=0; x<tamanio; x++){
-            nuevos[x]=ninios[x];
+        if(ninios!=null){
+            tamanio=ninios.length;
+            Ninio[] nuevos = new Ninio[tamanio+1];
+            for(x=0; x<tamanio; x++){
+                nuevos[x]=ninios[x];
+            }
+            nuevos[x]=nuevo;
+            ninios=nuevos;
         }
-        nuevos[x]=nuevo;
-        ninios=nuevos;
+        else{
+            ninios = new Ninio[1];
+            ninios[0]=nuevo;
+        }
     }
     
     public void eliminarNinio(int posicion){
@@ -97,9 +104,9 @@ public class Tutor {
             }
             else{
                 nuevos[x]=ninios[y];
+                x++;
+                y++;
             }
-            x++;
-            y++;
         }
         ninios=nuevos;
     }
