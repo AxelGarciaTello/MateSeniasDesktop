@@ -28,17 +28,11 @@ public class IngresoFrame extends JFrame{
                         getClass().getResource("Iconos/Icono.png")
                 ).getImage()
         );
-        JLabel[] etiqueta = new JLabel[2];
-        etiqueta[0] = new JLabel("Iniciar sesion.");
-        etiqueta[0].setSize(225,25);
-        etiqueta[0].setLocation(40, 15);
-        etiqueta[0].setFont(new Font("Ubuntu", 0, 35));
-        etiqueta[0].setForeground(new Color(255, 255, 255));
-        etiqueta[1] = new JLabel("Nombre de usuario.");
-        etiqueta[1].setSize(200,25);
-        etiqueta[1].setLocation(50, 100);
-        etiqueta[1].setFont(new Font("Ubuntu", 0, 20));
-        etiqueta[1].setForeground(new Color(255, 255, 255));
+        JLabel etiqueta = new JLabel("Iniciar sesion.");
+        etiqueta.setSize(225,25);
+        etiqueta.setLocation(40, 15);
+        etiqueta.setFont(new Font("Ubuntu", 0, 35));
+        etiqueta.setForeground(new Color(255, 255, 255));
         nombreUsuario = new JTextField();
         nombreUsuario.setSize(200, 30);
         nombreUsuario.setLocation(50, 135);
@@ -46,8 +40,7 @@ public class IngresoFrame extends JFrame{
         contenedor = this.getContentPane();
         contenedor.setBackground(new Color(56, 87, 35));
         contenedor.setLayout(null);
-        contenedor.add(etiqueta[0]);
-        contenedor.add(etiqueta[1]);
+        contenedor.add(etiqueta);
         contenedor.add(nombreUsuario);
     }
     
@@ -63,6 +56,10 @@ public class IngresoFrame extends JFrame{
     
     public Container getContenedor(){
         return contenedor;
+    }
+    
+    public JTextField getNombreUsuario(){
+        return nombreUsuario;
     }
     
 }

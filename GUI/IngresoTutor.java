@@ -26,11 +26,17 @@ public class IngresoTutor extends IngresoFrame {
     
     private void initComponents(){
         contenedor = super.getContenedor();
-        JLabel etiqueta = new JLabel("Contaseña");
-        etiqueta.setSize(200, 25);
-        etiqueta.setLocation(50, 170);
-        etiqueta.setFont(new Font("Ubuntu", 0, 20));
-        etiqueta.setForeground(new Color(255, 255, 255));
+        JLabel[] etiqueta = new JLabel[2];
+        etiqueta[0] = new JLabel("Correo de usuario.");
+        etiqueta[0].setSize(200,25);
+        etiqueta[0].setLocation(50, 100);
+        etiqueta[0].setFont(new Font("Ubuntu", 0, 20));
+        etiqueta[0].setForeground(new Color(255, 255, 255));
+        etiqueta[1] = new JLabel("Contaseña");
+        etiqueta[1].setSize(200, 25);
+        etiqueta[1].setLocation(50, 170);
+        etiqueta[1].setFont(new Font("Ubuntu", 0, 20));
+        etiqueta[1].setForeground(new Color(255, 255, 255));
         contrasenia = new JPasswordField();
         contrasenia.setSize(200, 30);
         contrasenia.setLocation(50, 205);
@@ -56,13 +62,16 @@ public class IngresoTutor extends IngresoFrame {
         cambiarCuenta.setForeground(new Color(255, 255, 255));
         cambiarCuenta.setBorder(null);
         cambiarCuenta.setFont(new Font("Ubuntu", 0, 20));
-        contenedor.add(etiqueta);
+        contenedor.add(etiqueta[0]);
+        contenedor.add(etiqueta[1]);
         contenedor.add(contrasenia);
         contenedor.add(ingresar);
         contenedor.add(registrar);
         contenedor.add(cambiarCuenta);
         ingresar.addActionListener(
-                new IngresarTutorActionListener(this)
+                new IngresarTutorActionListener(
+                        this, super.getNombreUsuario(), contrasenia
+                )
         );
         cambiarCuenta.addActionListener(
                 new IrIngresoNinioActionListener(this)

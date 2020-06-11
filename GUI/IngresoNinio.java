@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 
 public class IngresoNinio extends IngresoFrame {
@@ -21,6 +22,11 @@ public class IngresoNinio extends IngresoFrame {
     
     private void initComponents(){
         contenedor = super.getContenedor();
+        JLabel etiqueta = new JLabel("Nombre de usuario.");
+        etiqueta.setSize(200,25);
+        etiqueta.setLocation(50, 100);
+        etiqueta.setFont(new Font("Ubuntu", 0, 20));
+        etiqueta.setForeground(new Color(255, 255, 255));
         ingresar = new JButton("Ingresar");
         ingresar.setSize(200, 30);
         ingresar.setLocation(50, 200);
@@ -35,6 +41,7 @@ public class IngresoNinio extends IngresoFrame {
         cambiarCuenta.setForeground(new Color(255, 255, 255));
         cambiarCuenta.setBorder(null);
         cambiarCuenta.setFont(new Font("Ubuntu", 0, 20));
+        contenedor.add(etiqueta);
         contenedor.add(ingresar);
         contenedor.add(cambiarCuenta);
         ingresar.addActionListener(
