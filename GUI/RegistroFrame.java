@@ -1,8 +1,8 @@
 
 package GUI;
 
-import Control.IngresarTutorActionListener;
 import Control.IrIngresoTutorActionListener;
+import Control.RegistrarTutorActionListener;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -93,7 +93,9 @@ public class RegistroFrame extends JFrame {
         guardar.setBackground(new Color(47, 55, 74));
         guardar.setForeground(new Color(255, 255, 255));
         guardar.addActionListener(
-                new IngresarTutorActionListener(this)
+                new RegistrarTutorActionListener(
+                        this, nombre, correo, contrasenia, confirmacion
+                )
         );
         contenedor.add(guardar);
         cancelar = new JButton("Cancelar");
