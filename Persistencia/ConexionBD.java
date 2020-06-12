@@ -23,7 +23,7 @@ public class ConexionBD {
             sqle.printStackTrace();
             JOptionPane.showMessageDialog(
                     null, "No se pudo establecer conexion con la base de datos",
-                    "Error", 2
+                    "Error", JOptionPane.ERROR_MESSAGE
             );
         }
     }
@@ -36,7 +36,8 @@ public class ConexionBD {
         catch(SQLException sqle){
             sqle.printStackTrace();
             JOptionPane.showMessageDialog(
-                    null, "Error al realizar la consulta","Error", 2
+                    null, "Error al realizar la consulta","Error",
+                    JOptionPane.ERROR_MESSAGE
             );
         }
         return rs;
