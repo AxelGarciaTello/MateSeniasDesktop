@@ -1,9 +1,9 @@
 
 package GUI;
 
-import Control.AgregarNinioActionListener;
-import Control.EditarNinioActionListener;
 import Control.EliminarNinioActionListener;
+import Control.IrEditadoNinioActionListener;
+import Control.IrRegistroNinioActionListener;
 import Control.VerProgresoNinioListSelectionListener;
 import Logico.Ninio;
 import Logico.Tutor;
@@ -106,9 +106,7 @@ public class InformacionNinioPanel extends JPanel {
         nuevo.setBackground(new Color(47, 55, 74));
         nuevo.setForeground(new Color(255, 255, 255));
         nuevo.addActionListener(
-                new AgregarNinioActionListener(
-                        this, tutor
-                )
+                new IrRegistroNinioActionListener(this, tutor)
         );
         editar = new JButton("Editar");
         editar.setFont(new Font("Ubuntu", 0 ,20));
@@ -116,9 +114,7 @@ public class InformacionNinioPanel extends JPanel {
         editar.setBackground(new Color(47, 55, 74));
         editar.setForeground(new Color(255, 255, 255));
         editar.addActionListener(
-                new EditarNinioActionListener(
-                        this, ninios, tutor
-                )
+                new IrEditadoNinioActionListener(this, tutor, ninios)
         );
         eliminar = new JButton("Eliminar");
         eliminar.setFont(new Font("Ubuntu", 0 ,20));
@@ -204,8 +200,6 @@ public class InformacionNinioPanel extends JPanel {
                         ninios, tutor.getNinios(), nombre, etiquetas, progresos
         );
         ninios.addListSelectionListener(lista);
-        
-        
     }
     
 }

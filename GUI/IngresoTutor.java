@@ -3,7 +3,7 @@ package GUI;
 
 import Control.IngresarTutorActionListener;
 import Control.IrIngresoNinioActionListener;
-import Control.IrRegistroActionListener;
+import Control.IrRegistroTutorActionListener;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -32,7 +32,7 @@ public class IngresoTutor extends IngresoFrame {
         etiqueta[0].setLocation(50, 100);
         etiqueta[0].setFont(new Font("Ubuntu", 0, 20));
         etiqueta[0].setForeground(new Color(255, 255, 255));
-        etiqueta[1] = new JLabel("Contaseña");
+        etiqueta[1] = new JLabel("Contraseña");
         etiqueta[1].setSize(200, 25);
         etiqueta[1].setLocation(50, 170);
         etiqueta[1].setFont(new Font("Ubuntu", 0, 20));
@@ -76,8 +76,7 @@ public class IngresoTutor extends IngresoFrame {
         cambiarCuenta.addActionListener(
                 new IrIngresoNinioActionListener(this)
         );
-        registrar.addActionListener(
-                new IrRegistroActionListener(this)
+        registrar.addActionListener(new IrRegistroTutorActionListener(this)
         );
     }
     
