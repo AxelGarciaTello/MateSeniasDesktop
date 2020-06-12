@@ -3,7 +3,7 @@ package Control;
 
 import Logico.Juego;
 import Logico.Ninio;
-import Logico.Progreso;
+import Persistencia.ConexionBD;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,6 +33,8 @@ public class CalificarJuegoActionListener implements ActionListener {
             x=0;
         String[] respuestas = new String[tamanio];
         boolean[] aciertos = new boolean[tamanio];
+        ConexionBD bd;
+        String sentencia;
         for(x=0; x<tamanio; x++){
             if(crucigrama[x].getText().equals("")){
                 JOptionPane.showMessageDialog(
@@ -44,6 +46,11 @@ public class CalificarJuegoActionListener implements ActionListener {
             respuestas[x]=crucigrama[x].getText();
         }
         aciertos=juego.calificar(respuestas, ninio.getProgreso(progreso));
+        sentencia="UPDATE `avance` SET `Calificación`="
+                +ninio.getProgreso(progreso).getValor()+" WHERE idContenido="
+                +(progreso+1)+" AND UsrInfante='"+ninio.getNombre()+"';";
+        bd = new ConexionBD();
+        bd.administrar(sentencia);
         for(x=0; x<tamanio; x++){
             if(aciertos[x]){
                 crucigrama[x].setBackground(

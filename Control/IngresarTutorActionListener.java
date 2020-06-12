@@ -32,7 +32,7 @@ public class IngresarTutorActionListener implements ActionListener {
         if(correo.getText().equals("") || contrasenia.getText().equals("")){
             JOptionPane.showMessageDialog(
                     null, "Por favor ingrese todos los datos", 
-                    "Datos incompletos", 2
+                    "Datos incompletos", JOptionPane.ERROR_MESSAGE
             );
         }
         else{

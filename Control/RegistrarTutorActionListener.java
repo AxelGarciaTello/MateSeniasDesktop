@@ -41,28 +41,32 @@ public class RegistrarTutorActionListener implements ActionListener {
                 correo.getText().equals("") ||
                 contrasenia.getText().equals("")){
             JOptionPane.showMessageDialog(
-                    null, "Por favor llene todos los campos", "Campos vacíos", 1
+                    null, "Por favor llene todos los campos", "Campos vacíos",
+                    JOptionPane.ERROR_MESSAGE
             );
         }
         else if(contrasenia.getText().length()<6){
             JOptionPane.showMessageDialog(
-                    null, "La contraseña es muy pequeña", "Contraseña", 1
+                    null, "La contraseña es muy pequeña", "Contraseña",
+                    JOptionPane.ERROR_MESSAGE
             );
         }
         else if(!contrasenia.getText().equals(confirmacion.getText())){
             JOptionPane.showMessageDialog(
-                    null, "Las contraseñas no coinciden", "Contraseña",1
+                    null, "Las contraseñas no coinciden", "Contraseña",
+                    JOptionPane.ERROR_MESSAGE
             );
         }
         else{
             bd = new ConexionBD();
             sentencia="INSERT INTO `tutor` (`usr`, `email`, `psw`) VALUES ('"+
-                    nombre.getText()+"', '"+correo.getText()+"', '"+
-                    contrasenia.getText()+"');";
+                    nombre.getText()+"', '"+correo.getText()+"', sha2('"+
+                    contrasenia.getText()+"', 224));";
             respuesta = bd.administrar(sentencia);
             if(respuesta){
                 JOptionPane.showMessageDialog(
-                        null, "Usuario creado con exito", "¡Felicidades!", 0
+                        null, "Usuario creado con exito", "¡Felicidades!",
+                        JOptionPane.INFORMATION_MESSAGE
                 );
                 tutor = new Tutor(
                         nombre.getText(), correo.getText(),
@@ -77,7 +81,7 @@ public class RegistrarTutorActionListener implements ActionListener {
                 JOptionPane.showMessageDialog(
                         null, "No se pudo crear el usuario\nVerifique que el "
                                 + "correo no haya sido registrado previamente",
-                        "Error", 1
+                        "Error", JOptionPane.ERROR_MESSAGE
                 );
             }
         }

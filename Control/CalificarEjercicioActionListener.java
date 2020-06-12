@@ -3,6 +3,7 @@ package Control;
 
 import Logico.Ejercicio;
 import Logico.Ninio;
+import Persistencia.ConexionBD;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,6 +34,8 @@ public class CalificarEjercicioActionListener implements ActionListener {
             x=0;
         int[] respuestas = new int[tamanio];
         boolean[] aciertos = new boolean[tamanio];
+        ConexionBD bd;
+        String sentencia;
         for(x=0; x<tamanio; x++){
             if(cajaRespuestas[x].getText().equals("")){
                 JOptionPane.showMessageDialog(
@@ -46,6 +49,11 @@ public class CalificarEjercicioActionListener implements ActionListener {
             );
         }
         aciertos = ejercicio.calificar(respuestas, ninio.getProgreso(progreso));
+        sentencia="UPDATE `avance` SET `Calificación`="
+                +ninio.getProgreso(progreso).getValor()+" WHERE idContenido="
+                +(progreso+1)+" AND UsrInfante='"+ninio.getNombre()+"';";
+        bd = new ConexionBD();
+        bd.administrar(sentencia);
         for(x=0; x<tamanio; x++){
             if(aciertos[x]){
                 cajaRespuestas[x].setBackground(
