@@ -7,5 +7,5 @@ public class MateSenias {
         IngresoNinio ingreso = new IngresoNinio();
         ingreso.setVisible(true);
     }
-
+    
 }
