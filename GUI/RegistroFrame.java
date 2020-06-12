@@ -1,13 +1,11 @@
 
 package GUI;
 
-import Control.IrIngresoTutorActionListener;
-import Control.RegistrarTutorActionListener;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -20,8 +18,6 @@ public class RegistroFrame extends JFrame {
                        correo;
     private JPasswordField contrasenia,
                            confirmacion;
-    private JButton guardar,
-                    cancelar;
     private Container contenedor;
     
     public RegistroFrame(){
@@ -85,30 +81,6 @@ public class RegistroFrame extends JFrame {
         confirmacion.setLocation(30, 325);
         confirmacion.setFont(new Font("Ubuntu", 0, 20));
         contenedor.add(confirmacion);
-        guardar = new JButton("Registrate");
-        guardar.setSize(240, 30);
-        guardar.setLocation(30, 365);
-        guardar.setFont(new Font("Ubuntu", 0, 20));
-        guardar.setBorder(null);
-        guardar.setBackground(new Color(47, 55, 74));
-        guardar.setForeground(new Color(255, 255, 255));
-        guardar.addActionListener(
-                new RegistrarTutorActionListener(
-                        this, nombre, correo, contrasenia, confirmacion
-                )
-        );
-        contenedor.add(guardar);
-        cancelar = new JButton("Cancelar");
-        cancelar.setSize(240, 30);
-        cancelar.setLocation(30, 400);
-        cancelar.setFont(new Font("Ubuntu", 0, 20));
-        cancelar.setBorder(null);
-        cancelar.setBackground(new Color(227, 66, 51));
-        cancelar.setForeground(new Color(255, 255, 255));
-        cancelar.addActionListener(
-                new IrIngresoTutorActionListener(this)
-        );
-        contenedor.add(cancelar);
     }
     
     public void destruir(){
@@ -128,5 +100,29 @@ public class RegistroFrame extends JFrame {
             contenedor=null;
         }
         System.gc();
+    }
+    
+    public void agregar(Component objeto){
+        contenedor.add(objeto);
+    }
+    
+    public JTextField getNombre(){
+        return nombre;
+    }
+    
+    public JTextField getCorreo(){
+        return correo;
+    }
+    
+    public JPasswordField getContrasenia(){
+        return contrasenia;
+    }
+    
+    public JPasswordField getConfirmacion(){
+        return confirmacion;
+    }
+    
+    public void bloquearCorreo(){
+        correo.setEditable(false);
     }
 }
