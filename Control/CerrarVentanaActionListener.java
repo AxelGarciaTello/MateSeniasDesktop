@@ -1,11 +1,13 @@
 
 package Control;
 
+import GUI.EditadoNinio;
 import GUI.EjemploFrame;
 import GUI.EjercicioFrame;
 import GUI.JuegoFrame;
 import GUI.MultiplicarCentenasFrame;
 import GUI.MultiplicarDecenasFrame;
+import GUI.RegistroNinio;
 import GUI.SistemaNumericoFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,6 +39,12 @@ public class CerrarVentanaActionListener implements ActionListener {
         }
         else if(ventana instanceof MultiplicarCentenasFrame){
             ((MultiplicarCentenasFrame)ventana).destruir();
+        }
+        else if(ventana instanceof RegistroNinio){
+            ((RegistroNinio)ventana).destruir();
+        }
+        else if(ventana instanceof EditadoNinio){
+            ((EditadoNinio)ventana).destruir();
         }
         ventana.dispose();
     }

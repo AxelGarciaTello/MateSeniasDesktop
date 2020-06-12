@@ -2,22 +2,22 @@
 package Control;
 
 import GUI.IngresoTutor;
-import GUI.RegistroFrame;
+import GUI.RegistroTutor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 
-public class IrRegistroActionListener implements ActionListener {
+public class IrRegistroTutorActionListener implements ActionListener {
     private JFrame ventana;
     
-    public IrRegistroActionListener(JFrame ventana){
+    public IrRegistroTutorActionListener(JFrame ventana){
         this.ventana=ventana;
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        RegistroFrame registro = new RegistroFrame();
+        RegistroTutor registro = new RegistroTutor();
         registro.setVisible(true);
         if(ventana instanceof IngresoTutor){
             ((IngresoTutor)ventana).destruir();
