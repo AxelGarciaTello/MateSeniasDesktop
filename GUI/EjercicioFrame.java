@@ -83,7 +83,6 @@ public class EjercicioFrame extends EjemploFrame {
         reintentar.setVisible(false);
         reintentar.setBackground(new Color(56, 87, 35));
         reintentar.setForeground(new Color(255, 255, 255));
-        //reintentar.setBorder(null);
         reintentar.addActionListener(
                 new ReintentarEjercicioActionListener(
                         cajaRespuestas, reintentar
