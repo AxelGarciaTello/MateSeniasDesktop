@@ -1,6 +1,8 @@
 
 package Logico;
 
+import Persistencia.ConexionBD;
+
 
 public class Ejercicio extends Ejemplo {
     private Opcion[] opciones;
