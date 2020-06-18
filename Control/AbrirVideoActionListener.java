@@ -19,10 +19,12 @@ public class AbrirVideoActionListener implements ActionListener {
         try{
             String so=System.getProperty("os.name");
             if(so.equals("Linux")){
-                video="totem "+video;
+                video="firefox "+video;
                 Runtime.getRuntime().exec(video);
             }
-            else if(so.equals("Windows")){
+            else if(so.equals("Windows 10") ||
+                    so.equals("Windows 8.1") ||
+                    so.equals("Windows 7")){
                 video="rundll32 url.dll,FileProtocolHandler "+video;
                 Runtime.getRuntime().exec(video);
             }

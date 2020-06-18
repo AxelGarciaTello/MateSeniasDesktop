@@ -143,6 +143,19 @@ public class MenuNinio extends MenuFrame {
         menuVideo = new JPanel();
         menuVideo.setLayout(new GridLayout(6,2));
         menuVideo.setBackground(new Color(56, 87, 35));
+        String[] video={
+                        "https://youtu.be/qI461yZRnzA",
+                        "https://youtu.be/UMSxkbjseuA",
+                        "https://youtu.be/GW7tddqTJrg",
+                        "https://youtu.be/Rb4mZ9iu5jQ",
+                        "https://youtu.be/dA_YYtJoEH8",
+                        "https://youtu.be/_hI5g9Qgk88",
+                        "https://youtu.be/6E79UxPlGcQ",
+                        "https://youtu.be/THYVpJVpILo",
+                        "https://youtu.be/dpWv-eKXLWs",
+                        "https://youtu.be/5pHSby10klE",
+                        "https://youtu.be/3dbWbMLVvcA",
+                        "https://youtu.be/C_83UW4UVPE"};
         temasVideo = new JButton[12];
         temasVideo[0] = new JButton("1. Introducción ¿Qué es la artimética?");
         temasVideo[1] = new JButton("2. Concepto de unidad y números");
@@ -162,7 +175,7 @@ public class MenuNinio extends MenuFrame {
             temasVideo[x].setBorder(null);
             temasVideo[x].setFont(new Font("Ubuntu", 0, 20));
             temasVideo[x].addActionListener(
-                    new AbrirVideoActionListener("")
+                    new AbrirVideoActionListener(video[x])
             );
             menuVideo.add(temasVideo[x]);
         }
